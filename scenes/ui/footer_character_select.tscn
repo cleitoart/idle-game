@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/footer_character_select.gd" id="1_script"]
+
+[node name="FooterCharacterSelect" type="MarginContainer"]
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_script")
+
+[node name="Box" type="VBoxContainer" parent="."]
+theme_override_constants/separation = 6
+
+[node name="TitleLabel" type="Label" parent="Box"]
+text = "Select Character"
+
+[node name="List" type="HBoxContainer" parent="Box"]
+theme_override_constants/separation = 8

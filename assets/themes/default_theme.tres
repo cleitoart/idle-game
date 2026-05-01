@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://dc6qq0ib5rqip"]
+
+[sub_resource type="SystemFont" id="SystemFont_pt_serif"]
+font_names = PackedStringArray("PT Serif", "Cambria", "Georgia", "Times New Roman", "serif")
+font_weight = 700
+
+[resource]
+default_font = SubResource("SystemFont_pt_serif")
+default_font_size = 16

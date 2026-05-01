@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://bbduah11hshkd"]
+
+[ext_resource type="Script" uid="uid://7lxgqrgo1sly" path="res://scripts/data/character_data.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://djnixj6k20b75" path="res://assets/sprites/warrior.png" id="2_sg2ek"]
+[ext_resource type="Resource" path="res://data/items/training_sword.tres" id="2_sword"]
+[ext_resource type="Resource" path="res://data/stages/forest_1_1.tres" id="3_stage"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"warrior"
+display_name = "Warrior"
+base_hp = 50
+base_atk = 5
+base_def = 1
+starting_weapon = ExtResource("2_sword")
+starting_stage = ExtResource("3_stage")
+sprite_sheet = ExtResource("2_sg2ek")
+sprite_frame_width = 15
+sprite_frame_height = 21
+sprite_scale = 7

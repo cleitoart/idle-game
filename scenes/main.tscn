@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cni0j8x6um725"]
+
+[ext_resource type="Script" uid="uid://ts5xat6dkjxu" path="res://scenes/main.gd" id="1_main"]
+[ext_resource type="Theme" uid="uid://dc6qq0ib5rqip" path="res://assets/themes/default_theme.tres" id="2_theme"]
+[ext_resource type="PackedScene" uid="uid://2ygvaxsfs8h8" path="res://scenes/ui/side_menu.tscn" id="3_side"]
+[ext_resource type="PackedScene" path="res://scenes/ui/right_panel.tscn" id="4_right"]
+[ext_resource type="PackedScene" path="res://scenes/ui/footer.tscn" id="5_footer"]
+[ext_resource type="PackedScene" path="res://scenes/views/battle_view.tscn" id="6_battle"]
+[ext_resource type="PackedScene" path="res://scenes/views/town_view.tscn" id="7_town"]
+[ext_resource type="PackedScene" path="res://scenes/views/gathering_view.tscn" id="8_gather"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/modal_layer.tscn" id="9_modals"]
+
+[node name="Main" type="Control" unique_id=934663149]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_main")
+
+[node name="RootHBox" type="HBoxContainer" parent="." unique_id=563151000]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SideMenu" parent="RootHBox" unique_id=1821802692 instance=ExtResource("3_side")]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+
+[node name="ViewColumn" type="VBoxContainer" parent="RootHBox" unique_id=7543955]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ViewContainer" type="PanelContainer" parent="RootHBox/ViewColumn" unique_id=673294546]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BattleView" parent="RootHBox/ViewColumn/ViewContainer" unique_id=514050781 instance=ExtResource("6_battle")]
+layout_mode = 2
+
+[node name="TownView" parent="RootHBox/ViewColumn/ViewContainer" unique_id=741427002 instance=ExtResource("7_town")]
+visible = false
+layout_mode = 2
+
+[node name="GatheringView" parent="RootHBox/ViewColumn/ViewContainer" unique_id=1420152544 instance=ExtResource("8_gather")]
+visible = false
+layout_mode = 2
+
+[node name="Footer" parent="RootHBox/ViewColumn" unique_id=1441870515 instance=ExtResource("5_footer")]
+custom_minimum_size = Vector2(0, 162)
+layout_mode = 2
+
+[node name="RightPanel" parent="RootHBox" unique_id=1586355426 instance=ExtResource("4_right")]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+
+[node name="ModalLayer" parent="." unique_id=1595600662 instance=ExtResource("9_modals")]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/modals/modal_layer.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/character_modal.tscn" id="2_char"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/map_modal.tscn" id="3_map"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/inventory_modal.tscn" id="4_inv"]
+
+[node name="ModalLayer" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_script")
+
+[node name="CharacterModal" parent="." instance=ExtResource("2_char")]
+visible = false
+
+[node name="MapModal" parent="." instance=ExtResource("3_map")]
+visible = false
+
+[node name="InventoryModal" parent="." instance=ExtResource("4_inv")]
+visible = false

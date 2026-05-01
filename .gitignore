@@ -1,0 +1,12 @@
+# Godot 4+ editor cache and project export config
+.godot/
+export.cfg
+export_presets.cfg
+
+# Local Claude Code state (worktrees, plans, memory)
+.claude/
+
+# OS / IDE noise
+.DS_Store
+Thumbs.db
+*.swp

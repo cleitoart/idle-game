@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/views/battle_view.gd" id="1_view"]
+[ext_resource type="Script" path="res://scenes/combat/combat_controller.gd" id="2_ctrl"]
+
+[node name="BattleView" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_view")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Header" type="VBoxContainer" parent="Layout"]
+custom_minimum_size = Vector2(0, 80)
+
+[node name="StageLabel" type="Label" parent="Layout/Header"]
+text = "Current Stage:"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+
+[node name="EnemyLabel" type="Label" parent="Layout/Header"]
+text = ""
+horizontal_alignment = 1
+
+[node name="EnemySlot" type="CenterContainer" parent="Layout"]
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="PlayerSlot" type="CenterContainer" parent="Layout"]
+size_flags_vertical = 3
+
+[node name="CombatController" type="Node" parent="."]
+script = ExtResource("2_ctrl")
+enemy_slot = NodePath("../Layout/EnemySlot")
+player_slot = NodePath("../Layout/PlayerSlot")

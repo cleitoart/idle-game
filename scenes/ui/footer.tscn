@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/footer.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/footer_stats.tscn" id="2_stats"]
+[ext_resource type="PackedScene" path="res://scenes/ui/footer_character_select.tscn" id="3_pick"]
+
+[node name="Footer" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 96)
+script = ExtResource("1_script")
+
+[node name="Modes" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 80)
+mouse_filter = 1
+
+[node name="FooterStats" parent="Modes" instance=ExtResource("2_stats")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="FooterCharacterSelect" parent="Modes" instance=ExtResource("3_pick")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false

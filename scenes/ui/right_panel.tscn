@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/right_panel.gd" id="1_script"]
+
+[node name="RightPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(220, 0)
+script = ExtResource("1_script")
+
+[node name="Margin" type="MarginContainer" parent="."]
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Box" type="VBoxContainer" parent="Margin"]
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Margin/Box"]
+text = "Battle"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="Modals" type="VBoxContainer" parent="Margin/Box"]
+theme_override_constants/separation = 8
+
+[node name="CharacterButton" type="Button" parent="Margin/Box/Modals"]
+custom_minimum_size = Vector2(0, 40)
+text = "Character"
+
+[node name="MapButton" type="Button" parent="Margin/Box/Modals"]
+custom_minimum_size = Vector2(0, 40)
+text = "Map"
+
+[node name="InventoryButton" type="Button" parent="Margin/Box/Modals"]
+custom_minimum_size = Vector2(0, 40)
+text = "Inventory"
+
+[node name="Separator" type="HSeparator" parent="Margin/Box"]
+
+[node name="FooterTitle" type="Label" parent="Margin/Box"]
+text = "Footer"
+horizontal_alignment = 1
+
+[node name="FooterModes" type="VBoxContainer" parent="Margin/Box"]
+theme_override_constants/separation = 8
+
+[node name="StatsButton" type="Button" parent="Margin/Box/FooterModes"]
+custom_minimum_size = Vector2(0, 36)
+toggle_mode = true
+button_pressed = true
+text = "Stats"
+
+[node name="PartyButton" type="Button" parent="Margin/Box/FooterModes"]
+custom_minimum_size = Vector2(0, 36)
+toggle_mode = true
+text = "Characters"

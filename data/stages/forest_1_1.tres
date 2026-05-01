@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/stage_data.gd" id="1_script"]
+[ext_resource type="Resource" path="res://data/enemies/slime.tres" id="2_slime"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"forest_1_1"
+display_name = "Forest 1-1"
+enemy_pool = [ExtResource("2_slime")]
+kills_to_advance = 0
+next_stage = null

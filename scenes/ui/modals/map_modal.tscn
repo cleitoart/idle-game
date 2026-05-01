@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/modals/map_modal.gd" id="1_script"]
+
+[node name="MapModal" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+script = ExtResource("1_script")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.55)
+mouse_filter = 0
+
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(560, 360)
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="Box" type="VBoxContainer" parent="Center/Panel/Margin"]
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Center/Panel/Margin/Box"]
+
+[node name="TitleLabel" type="Label" parent="Center/Panel/Margin/Box/Header"]
+text = "Map"
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+
+[node name="CloseButton" type="Button" parent="Center/Panel/Margin/Box/Header"]
+text = "X"
+custom_minimum_size = Vector2(40, 32)
+
+[node name="Content" type="VBoxContainer" parent="Center/Panel/Margin/Box"]
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="StageNameRow" type="Label" parent="Center/Panel/Margin/Box/Content"]
+text = "Location:"
+theme_override_font_sizes/font_size = 18
+
+[node name="KillsRow" type="Label" parent="Center/Panel/Margin/Box/Content"]
+text = "Kills on this stage: 0"
+
+[node name="EnemiesTitle" type="Label" parent="Center/Panel/Margin/Box/Content"]
+text = "Enemies in this area:"
+
+[node name="EnemiesBox" type="VBoxContainer" parent="Center/Panel/Margin/Box/Content"]
