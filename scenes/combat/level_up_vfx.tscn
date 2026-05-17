@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://bji4b0wqmy6xp"]
+
+[ext_resource type="Script" uid="uid://dm2ntpcciketq" path="res://scenes/combat/level_up_vfx.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://clqgjas3n5a4s" path="res://assets/sprites/effects/elipse_vfx002.png" id="2_pulse"]
+[ext_resource type="Texture2D" uid="uid://cicksb3lgv5v8" path="res://assets/sprites/effects/cross_vfx000.png" id="3_cross"]
+[ext_resource type="Theme" uid="uid://dc6qq0ib5rqip" path="res://assets/themes/default_theme.tres" id="4_l8sgp"]
+
+[sub_resource type="Curve" id="Curve_l8sgp"]
+_data = [Vector2(0.5405406, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.423663, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ucodo"]
+curve = SubResource("Curve_l8sgp")
+
+[sub_resource type="Curve" id="Curve_ucodo"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 2.8, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_861ki"]
+curve = SubResource("Curve_ucodo")
+
+[sub_resource type="Curve" id="Curve_oyxt7"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dxsck"]
+curve = SubResource("Curve_oyxt7")
+
+[sub_resource type="Curve" id="Curve_ssjol"]
+_data = [Vector2(0, 0), 0.0, 2.7967315, 0, 0, Vector2(0.8716216, 1), 0.069288366, 0.069288366, 0, 0, Vector2(0.9932432, 0), -28.269806, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_l8sgp"]
+curve = SubResource("Curve_ssjol")
+
+[sub_resource type="ParticleProcessMaterial" id="StarMaterial"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -44.99999
+angle_max = 45.00001
+angle_curve = SubResource("CurveTexture_861ki")
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 220.0
+initial_velocity_max = 440.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 54.189983
+angular_velocity_curve = SubResource("CurveTexture_dxsck")
+gravity = Vector3(0, 300, 0)
+damping_min = 1.2
+damping_max = 2.0
+scale_min = 0.17999999
+scale_max = 0.22999999
+scale_curve = SubResource("CurveTexture_l8sgp")
+alpha_curve = SubResource("CurveTexture_ucodo")
+
+[node name="LevelUpVfx" type="Node2D" unique_id=1350805498]
+script = ExtResource("1_script")
+
+[node name="Pulse" type="Sprite2D" parent="." unique_id=551008891]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_pulse")
+
+[node name="Particles" type="GPUParticles2D" parent="." unique_id=341204739]
+emitting = false
+amount = 14
+texture = ExtResource("3_cross")
+lifetime = 0.6
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.9
+randomness = 0.3
+fixed_fps = 60
+trail_lifetime = 1.88
+process_material = SubResource("StarMaterial")
+
+[node name="Label" type="Label" parent="." unique_id=272425494]
+modulate = Color(1, 1, 1, 0)
+offset_left = -120.0
+offset_top = -110.0
+offset_right = 120.0
+offset_bottom = -70.0
+theme = ExtResource("4_l8sgp")
+theme_override_colors/font_color = Color(1, 1, 0.55, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 28
+text = "Level Up"
+horizontal_alignment = 1
+vertical_alignment = 1

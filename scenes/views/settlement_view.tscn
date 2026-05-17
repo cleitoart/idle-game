@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2qkxmt2xvqv3"]
+
+[ext_resource type="Script" path="res://scenes/views/settlement_view.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cjryrfd2rf2c5" path="res://assets/sprites/background/forest-bg000.png" id="2_bg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/warrior.png" id="3_warrior"]
+
+[node name="SettlementView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+mouse_filter = 2
+modulate = Color(0.7, 0.7, 0.65, 1)
+
+[node name="WalkerLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="WarriorWalker" type="Sprite2D" parent="WalkerLayer"]
+position = Vector2(400, 600)
+scale = Vector2(4, 4)
+texture = ExtResource("3_warrior")
+region_enabled = true
+region_rect = Rect2(0, 0, 15, 21)
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 32
+mouse_filter = 2
+
+[node name="Box" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Margin/Box"]
+layout_mode = 2
+text = "Settlement (Acampamento)"
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.85, 0.66, 0.22, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+
+[node name="Hint" type="Label" parent="Margin/Box"]
+layout_mode = 2
+text = "Estagio 1: Acampamento. Estruturas iniciais disponiveis abaixo."
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.9, 0.9, 0.85, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+
+[node name="Spacer" type="Control" parent="Margin/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Structures" type="HBoxContainer" parent="Margin/Box"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="CraftingBtn" type="Button" parent="Margin/Box/Structures"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 96)
+text = "Crafting
+(Smithing/Smelting/Cooking/Alchemy)"
+theme_override_font_sizes/font_size = 14
+
+[node name="StructuresHint" type="Label" parent="Margin/Box"]
+layout_mode = 2
+text = "Vilarejo, Cidade, Reino e Imperio chegam em fases posteriores."
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.8, 0.8, 0.7, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+horizontal_alignment = 1

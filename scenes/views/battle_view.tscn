@@ -1,39 +1,113 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://boakvtf6xe23m"]
 
-[ext_resource type="Script" path="res://scenes/views/battle_view.gd" id="1_view"]
-[ext_resource type="Script" path="res://scenes/combat/combat_controller.gd" id="2_ctrl"]
+[ext_resource type="Script" uid="uid://d3ek8rk3x0h1d" path="res://scenes/views/battle_view.gd" id="1_view"]
+[ext_resource type="Script" uid="uid://netvb327hvs8" path="res://scenes/combat/combat_controller.gd" id="2_ctrl"]
+[ext_resource type="Texture2D" uid="uid://cjryrfd2rf2c5" path="res://assets/sprites/background/forest-bg000.png" id="3_bg"]
+[ext_resource type="PackedScene" path="res://scenes/ui/notification_stack.tscn" id="4_notif"]
+[ext_resource type="PackedScene" uid="uid://b6qkxmt2xvqv7" path="res://scenes/ui/battle_log_panel.tscn" id="5_log"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dev_panel.tscn" id="6_dev"]
 
-[node name="BattleView" type="Control"]
+[sub_resource type="StyleBoxFlat" id="HeaderBg"]
+bg_color = Color(0, 0, 0, 0.45)
+
+[node name="BattleView" type="Control" unique_id=869035974]
+clip_contents = true
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_view")
 
-[node name="Layout" type="VBoxContainer" parent="."]
-anchors_preset = 15
+[node name="Background" type="TextureRect" parent="." unique_id=2036336142]
+texture_filter = 1
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -64.0
+mouse_filter = 2
+texture = ExtResource("3_bg")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Header" type="VBoxContainer" parent="Layout"]
-custom_minimum_size = Vector2(0, 80)
+[node name="Layout" type="VBoxContainer" parent="." unique_id=1831680100]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+mouse_filter = 2
 
-[node name="StageLabel" type="Label" parent="Layout/Header"]
+[node name="Header" type="PanelContainer" parent="Layout" unique_id=1671898609]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("HeaderBg")
+
+[node name="HeaderMargin" type="MarginContainer" parent="Layout/Header" unique_id=1613613824]
+layout_mode = 2
+theme_override_constants/margin_top = 86
+theme_override_constants/margin_bottom = 10
+
+[node name="HeaderBox" type="VBoxContainer" parent="Layout/Header/HeaderMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="StageLabel" type="Label" parent="Layout/Header/HeaderMargin/HeaderBox" unique_id=1534978673]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Current Stage:"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 24
 
-[node name="EnemyLabel" type="Label" parent="Layout/Header"]
-text = ""
+[node name="WaveLabel" type="Label" parent="Layout/Header/HeaderMargin/HeaderBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+text = "Wave -"
 horizontal_alignment = 1
 
-[node name="EnemySlot" type="CenterContainer" parent="Layout"]
+[node name="EnemySlot" type="Control" parent="Layout" unique_id=589464838]
+layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
+mouse_filter = 2
 
-[node name="PlayerSlot" type="CenterContainer" parent="Layout"]
+[node name="PlayerSlot" type="CenterContainer" parent="Layout" unique_id=1773385741]
+layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
-[node name="CombatController" type="Node" parent="."]
+[node name="NotificationStack" parent="." unique_id=916039981 instance=ExtResource("4_notif")]
+z_index = 10
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -352.0
+offset_right = -20.0
+offset_bottom = -16.0
+
+[node name="BattleLogPanel" parent="." unique_id=861386368 instance=ExtResource("5_log")]
+z_index = 11
+layout_mode = 1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DevPanel" parent="." unique_id=1235809245 instance=ExtResource("6_dev")]
+z_index = 12
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 90.0
+offset_right = -16.0
+offset_bottom = 450.0
+grow_horizontal = 0
+
+[node name="CombatController" type="Node" parent="." unique_id=268363570]
 script = ExtResource("2_ctrl")
 enemy_slot = NodePath("../Layout/EnemySlot")
 player_slot = NodePath("../Layout/PlayerSlot")

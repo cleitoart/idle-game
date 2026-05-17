@@ -1,17 +1,72 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scenes/combat/hp_bar.gd" id="1_script"]
 
-[node name="HpBar" type="VBoxContainer"]
-custom_minimum_size = Vector2(220, 0)
-script = ExtResource("1_script")
+[sub_resource type="StyleBoxFlat" id="HpBg"]
+bg_color = Color(0.18, 0.16, 0.14, 0.7)
 
-[node name="Bar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(0, 16)
+[sub_resource type="StyleBoxFlat" id="HpFill"]
+bg_color = Color(0.42, 0.65, 0.42, 1)
+
+[sub_resource type="StyleBoxFlat" id="HpTransparentBg"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="HpTrailFill"]
+bg_color = Color(0.78, 0.32, 0.30, 1)
+
+[sub_resource type="StyleBoxFlat" id="CooldownBg"]
+bg_color = Color(0.12, 0.10, 0.06, 0.65)
+
+[sub_resource type="StyleBoxFlat" id="CooldownFill"]
+bg_color = Color(0.95, 0.82, 0.30, 1)
+
+[node name="HpBar" type="VBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+script = ExtResource("1_script")
+theme_override_constants/separation = 2
+
+[node name="BarHolder" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 12)
+
+[node name="TrailBar" type="ProgressBar" parent="BarHolder"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 max_value = 1.0
 value = 1.0
 show_percentage = false
+theme_override_styles/background = SubResource("HpBg")
+theme_override_styles/fill = SubResource("HpTrailFill")
 
-[node name="Label" type="Label" parent="."]
+[node name="MainBar" type="ProgressBar" parent="BarHolder"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 1.0
+value = 1.0
+show_percentage = false
+theme_override_styles/background = SubResource("HpTransparentBg")
+theme_override_styles/fill = SubResource("HpFill")
+
+[node name="Label" type="Label" parent="BarHolder"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 text = "0 / 0"
 horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+
+[node name="CooldownBar" type="ProgressBar" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 4)
+max_value = 1.0
+value = 0.0
+show_percentage = false
+theme_override_styles/background = SubResource("CooldownBg")
+theme_override_styles/fill = SubResource("CooldownFill")

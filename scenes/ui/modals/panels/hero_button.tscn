@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bmhvtiscatqce"]
+
+[ext_resource type="Script" uid="uid://c516x4js6y6b2" path="res://scenes/ui/modals/panels/hero_button.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://dc6qq0ib5rqip" path="res://assets/themes/default_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://dvi28tyqa8o0p" path="res://assets/sprites/ui/character_screen/buttons/char_btn_normal.png" id="3_normal"]
+[ext_resource type="Texture2D" uid="uid://ds2i4c3u20s8p" path="res://assets/sprites/ui/character_screen/buttons/char_btn_hovered.png" id="4_hover"]
+[ext_resource type="Texture2D" uid="uid://uubhu5426ayp" path="res://assets/sprites/ui/character_screen/buttons/char_btn_pressed.png" id="5_pressed"]
+[ext_resource type="Texture2D" uid="uid://b7cmmpkm5ng4i" path="res://assets/sprites/ui/character_screen/icons/class_icon_placeholder.png" id="6_class_icon"]
+[ext_resource type="Texture2D" uid="uid://cbm216smp2ei" path="res://assets/sprites/ui/character_screen/dividers/h_divider_hero_btn_sep.png" id="7_divider"]
+
+[node name="HeroButton" type="TextureButton" unique_id=952079074]
+custom_minimum_size = Vector2(240, 92)
+offset_right = 240.0
+offset_bottom = 92.0
+theme = ExtResource("2_theme")
+toggle_mode = true
+texture_normal = ExtResource("3_normal")
+texture_pressed = ExtResource("5_pressed")
+texture_hover = ExtResource("4_hover")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_script")
+
+[node name="ClassIcon" type="TextureRect" parent="." unique_id=378773040]
+texture_filter = 1
+layout_mode = 0
+offset_left = 15.0
+offset_top = 9.0
+offset_right = 88.0
+offset_bottom = 82.0
+mouse_filter = 2
+texture = ExtResource("6_class_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CharNameLabel" type="Label" parent="." unique_id=1201852076]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 6.0
+offset_right = 195.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_font_sizes/font_size = 20
+text = "CharName"
+
+[node name="Divider" type="TextureRect" parent="." unique_id=1229543343]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 33.0
+offset_right = 230.0
+offset_bottom = 34.0
+mouse_filter = 2
+texture = ExtResource("7_divider")
+expand_mode = 1
+
+[node name="CharClassLabel" type="Label" parent="." unique_id=2022549883]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 36.0
+offset_right = 161.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_font_sizes/font_size = 18
+text = "Warrior"
+
+[node name="CharLevelLabel" type="Label" parent="." unique_id=1706306587]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 57.0
+offset_right = 134.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_font_sizes/font_size = 18
+text = "LV. 1"

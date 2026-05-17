@@ -1,0 +1,116 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/modals/area_results_modal.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="PanelStyle"]
+bg_color = Color(0.08, 0.08, 0.10, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.66, 0.22, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="AreaResultsModal" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+script = ExtResource("1_script")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.55)
+mouse_filter = 0
+
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(560, 480)
+theme_override_styles/panel = SubResource("PanelStyle")
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="Box" type="VBoxContainer" parent="Center/Panel/Margin"]
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Center/Panel/Margin/Box"]
+text = "Area Cleared"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.85, 0.66, 0.22, 1)
+
+[node name="StageLabel" type="Label" parent="Center/Panel/Margin/Box"]
+text = "Stage -"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="ComparisonLabel" type="Label" parent="Center/Panel/Margin/Box"]
+text = ""
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 14
+
+[node name="HSep" type="HSeparator" parent="Center/Panel/Margin/Box"]
+
+[node name="StatsGrid" type="GridContainer" parent="Center/Panel/Margin/Box"]
+columns = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 6
+
+[node name="XpKey" type="Label" parent="Center/Panel/Margin/Box/StatsGrid"]
+text = "XP gained"
+[node name="XpValue" type="Label" parent="Center/Panel/Margin/Box/StatsGrid"]
+text = "0"
+horizontal_alignment = 2
+
+[node name="GoldKey" type="Label" parent="Center/Panel/Margin/Box/StatsGrid"]
+text = "Gold gained"
+[node name="GoldValue" type="Label" parent="Center/Panel/Margin/Box/StatsGrid"]
+text = "0"
+horizontal_alignment = 2
+
+[node name="KillsKey" type="Label" parent="Center/Panel/Margin/Box/StatsGrid"]
+text = "Kills"
+[node name="KillsValue" type="Label" parent="Center/Panel/Margin/Box/StatsGrid"]
+text = "0"
+horizontal_alignment = 2
+
+[node name="TimeKey" type="Label" parent="Center/Panel/Margin/Box/StatsGrid"]
+text = "Time"
+[node name="TimeValue" type="Label" parent="Center/Panel/Margin/Box/StatsGrid"]
+text = "0s"
+horizontal_alignment = 2
+
+[node name="DropsTitle" type="Label" parent="Center/Panel/Margin/Box"]
+text = "Drops"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.66, 0.22, 1)
+
+[node name="DropsScroll" type="ScrollContainer" parent="Center/Panel/Margin/Box"]
+custom_minimum_size = Vector2(0, 140)
+size_flags_vertical = 3
+
+[node name="DropsList" type="VBoxContainer" parent="Center/Panel/Margin/Box/DropsScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="ButtonRow" type="HBoxContainer" parent="Center/Panel/Margin/Box"]
+alignment = 1
+
+[node name="ContinueBtn" type="Button" parent="Center/Panel/Margin/Box/ButtonRow"]
+text = "Continuar"
+custom_minimum_size = Vector2(180, 40)

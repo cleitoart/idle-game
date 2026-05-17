@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/views/exploration_view.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/systems/world_controller.gd" id="2_controller"]
+
+[node name="ExplorationView" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="WorldRoot" type="Node2D" parent="."]
+
+[node name="WorldController" type="Node" parent="."]
+script = ExtResource("2_controller")
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="AutoCombatBtn" type="Button" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 56.0
+grow_horizontal = 0
+toggle_mode = true
+text = "Auto Combat"

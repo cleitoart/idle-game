@@ -1,0 +1,30 @@
+[gd_resource type="Theme" format=3 uid="uid://cqnhwv8xwsinc"]
+
+[ext_resource type="StyleBox" uid="uid://b7k3dikctdj2b" path="res://common/themes/pressed_btn.stylebox" id="1_lsdyh"]
+[ext_resource type="StyleBox" uid="uid://ukdlc7kklwee" path="res://common/themes/default_btn.stylebox" id="2_6jxc8"]
+
+[sub_resource type="SystemFont" id="SystemFont_lsdyh"]
+font_names = PackedStringArray("PT Serif")
+font_weight = 999
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mskw"]
+bg_color = Color(0.3630269, 0.29459813, 0.2572042, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.68763506, 0.5968633, 0.5967349, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[resource]
+Button/font_sizes/font_size = 24
+Button/fonts/font = SubResource("SystemFont_lsdyh")
+Button/styles/disabled = SubResource("StyleBoxFlat_3mskw")
+Button/styles/focus = ExtResource("1_lsdyh")
+Button/styles/hover = ExtResource("2_6jxc8")
+Button/styles/hover_pressed = ExtResource("1_lsdyh")
+Button/styles/normal = ExtResource("2_6jxc8")
+Button/styles/pressed = ExtResource("1_lsdyh")

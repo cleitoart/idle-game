@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b5qxqg8ej42v5"]
+
+[ext_resource type="Script" uid="uid://b0n5c122wsvgr" path="res://scenes/combat/enemy.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/combat/hp_bar.tscn" id="2_hp"]
+[ext_resource type="Script" uid="uid://d0y6qb0paabbh" path="res://scenes/combat/shadow.gd" id="3_shadow"]
+[ext_resource type="Texture2D" uid="uid://cnnapfwgntoki" path="res://assets/sprites/effects/elipse_vfx000.png" id="4_shadow_tex"]
+[ext_resource type="Script" uid="uid://jhbtq5surfes" path="res://scenes/combat/hp_bar.gd" id="5_0v1ui"]
+
+[node name="Enemy" type="VBoxContainer" unique_id=1373473056]
+custom_minimum_size = Vector2(260, 320)
+alignment = 1
+script = ExtResource("1_script")
+
+[node name="BodyStage" type="Control" parent="." unique_id=1817668580]
+custom_minimum_size = Vector2(220, 220)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="Body" type="ColorRect" parent="BodyStage" unique_id=1354967524]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Shadow" type="Sprite2D" parent="BodyStage" unique_id=2061198580]
+texture = ExtResource("4_shadow_tex")
+script = ExtResource("3_shadow")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BodyStage" unique_id=1845190833]
+visible = false
+texture_filter = 1
+
+[node name="HpBar" type="VBoxContainer" parent="BodyStage" unique_id=361412741 instance=ExtResource("2_hp")]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 0
+mouse_filter = 2
+script = ExtResource("5_0v1ui")
+
+[node name="NameLabel" type="Label" parent="BodyStage" unique_id=93404953]
+layout_mode = 0
+text = "Enemy"
+horizontal_alignment = 1
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=766893377]
+
+[connection signal="resized" from="BodyStage" to="." method="_on_body_stage_resized"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

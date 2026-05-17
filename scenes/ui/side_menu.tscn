@@ -1,33 +1,69 @@
 [gd_scene format=3 uid="uid://2ygvaxsfs8h8"]
 
 [ext_resource type="Script" uid="uid://cdrn7fnr72eh" path="res://scenes/ui/side_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bg0q0h3175l7h" path="res://assets/sprites/ui/side_panel.png" id="2_panel"]
+[ext_resource type="PackedScene" uid="uid://cpu23c2nd0ypu" path="res://scenes/ui/menu_list_item.tscn" id="3_item"]
+[ext_resource type="Texture2D" uid="uid://cux5v735ddi2a" path="res://assets/sprites/ui/compass_placeholder.png" id="4_bcwny"]
+[ext_resource type="Texture2D" uid="uid://cqgb6udhr7o1t" path="res://assets/sprites/ui/settings_px.png" id="5_p84gr"]
+
+[sub_resource type="StyleBoxTexture" id="PanelBg"]
+texture = ExtResource("2_panel")
 
 [node name="SideMenu" type="PanelContainer" unique_id=1789514631]
-custom_minimum_size = Vector2(180, 0)
+custom_minimum_size = Vector2(393, 0)
+theme_override_styles/panel = SubResource("PanelBg")
 script = ExtResource("1_script")
 
-[node name="Margin" type="MarginContainer" parent="." unique_id=1410894769]
+[node name="Margin" type="MarginContainer" parent="." unique_id=185641802]
 layout_mode = 2
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_bottom = 32
 
-[node name="Buttons" type="VBoxContainer" parent="Margin" unique_id=528453322]
+[node name="Box" type="VBoxContainer" parent="Margin" unique_id=959353882]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="BattleButton" type="Button" parent="Margin/Buttons" unique_id=1259200605]
-custom_minimum_size = Vector2(0, 44)
+[node name="TopButtons" type="VBoxContainer" parent="Margin/Box" unique_id=693392539]
 layout_mode = 2
-text = "Battle"
+size_flags_vertical = 3
+theme_override_constants/separation = 8
 
-[node name="TownButton" type="Button" parent="Margin/Buttons" unique_id=2055877698]
-custom_minimum_size = Vector2(0, 44)
+[node name="ExplorationButton" parent="Margin/Box/TopButtons" unique_id=1950637007 instance=ExtResource("3_item")]
 layout_mode = 2
-text = "Town"
+expand_icon = true
+menu_text = "Exploration"
 
-[node name="GatheringButton" type="Button" parent="Margin/Buttons" unique_id=1918096936]
-custom_minimum_size = Vector2(0, 44)
+[node name="QuestsButton" parent="Margin/Box/TopButtons" unique_id=1280756178 instance=ExtResource("3_item")]
 layout_mode = 2
-text = "Gathering"
+menu_text = "Quests"
+menu_icon = ExtResource("4_bcwny")
+
+[node name="CodexButton" parent="Margin/Box/TopButtons" unique_id=116039000 instance=ExtResource("3_item")]
+layout_mode = 2
+menu_text = "Codex"
+menu_icon = ExtResource("4_bcwny")
+
+[node name="SettlementButton" parent="Margin/Box/TopButtons" unique_id=1016880649 instance=ExtResource("3_item")]
+layout_mode = 2
+menu_text = "Settlement"
+menu_icon = ExtResource("4_bcwny")
+
+[node name="Spacer" type="Control" parent="Margin/Box" unique_id=253424208]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottomButtons" type="VBoxContainer" parent="Margin/Box" unique_id=1493623433]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SettingsButton" parent="Margin/Box/BottomButtons" unique_id=1270387297 instance=ExtResource("3_item")]
+layout_mode = 2
+menu_text = "Settings"
+menu_icon = ExtResource("5_p84gr")
+
+[node name="HelpButton" parent="Margin/Box/BottomButtons" unique_id=1633621784 instance=ExtResource("3_item")]
+layout_mode = 2
+menu_text = "Help"
+menu_icon = ExtResource("4_bcwny")

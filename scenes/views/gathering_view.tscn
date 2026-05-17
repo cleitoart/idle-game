@@ -1,15 +1,215 @@
-[gd_scene format=3]
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/views/gathering_view.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cjryrfd2rf2c5" path="res://assets/sprites/background/forest-bg000.png" id="2_bg"]
 
 [node name="GatheringView" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_script")
 
-[node name="Center" type="CenterContainer" parent="."]
+[node name="Bg" type="TextureRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+mouse_filter = 2
+modulate = Color(0.55, 0.55, 0.55, 1)
 
-[node name="Label" type="Label" parent="Center"]
-text = "Gathering (WIP)"
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 32
+
+[node name="Box" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Margin/Box"]
+layout_mode = 2
+text = "Gathering"
 theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.85, 0.66, 0.22, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+
+[node name="Hint" type="Label" parent="Margin/Box"]
+layout_mode = 2
+text = "Escolha uma skill para coletar materiais. Coleta roda em loop continuo ate voce parar."
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+
+[node name="Skills" type="HBoxContainer" parent="Margin/Box"]
+layout_mode = 2
+theme_override_constants/separation = 24
+size_flags_vertical = 3
+
+[node name="MiningCard" type="PanelContainer" parent="Margin/Box/Skills"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 240)
+
+[node name="MiningMargin" type="MarginContainer" parent="Margin/Box/Skills/MiningCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="MiningBox" type="VBoxContainer" parent="Margin/Box/Skills/MiningCard/MiningMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MiningTitle" type="Label" parent="Margin/Box/Skills/MiningCard/MiningMargin/MiningBox"]
+layout_mode = 2
+text = "Mining"
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.85, 0.66, 0.22, 1)
+horizontal_alignment = 1
+
+[node name="MiningDesc" type="Label" parent="Margin/Box/Skills/MiningCard/MiningMargin/MiningBox"]
+layout_mode = 2
+text = "Coletar Copper Ore (4.0s/ciclo)"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+horizontal_alignment = 1
+
+[node name="MiningStats" type="Label" parent="Margin/Box/Skills/MiningCard/MiningMargin/MiningBox"]
+layout_mode = 2
+text = "Coletado: 0  |  Mastery: 0"
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+
+[node name="MiningProgress" type="ProgressBar" parent="Margin/Box/Skills/MiningCard/MiningMargin/MiningBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 16)
+max_value = 1.0
+show_percentage = false
+
+[node name="MiningButton" type="Button" parent="Margin/Box/Skills/MiningCard/MiningMargin/MiningBox"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 48)
+text = "Iniciar"
+theme_override_font_sizes/font_size = 18
+
+[node name="WoodcuttingCard" type="PanelContainer" parent="Margin/Box/Skills"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 240)
+
+[node name="WoodMargin" type="MarginContainer" parent="Margin/Box/Skills/WoodcuttingCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="WoodBox" type="VBoxContainer" parent="Margin/Box/Skills/WoodcuttingCard/WoodMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="WoodTitle" type="Label" parent="Margin/Box/Skills/WoodcuttingCard/WoodMargin/WoodBox"]
+layout_mode = 2
+text = "Woodcutting"
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.85, 0.66, 0.22, 1)
+horizontal_alignment = 1
+
+[node name="WoodDesc" type="Label" parent="Margin/Box/Skills/WoodcuttingCard/WoodMargin/WoodBox"]
+layout_mode = 2
+text = "Coletar Pine Log (3.5s/ciclo)"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+horizontal_alignment = 1
+
+[node name="WoodStats" type="Label" parent="Margin/Box/Skills/WoodcuttingCard/WoodMargin/WoodBox"]
+layout_mode = 2
+text = "Coletado: 0  |  Mastery: 0"
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+
+[node name="WoodProgress" type="ProgressBar" parent="Margin/Box/Skills/WoodcuttingCard/WoodMargin/WoodBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 16)
+max_value = 1.0
+show_percentage = false
+
+[node name="WoodButton" type="Button" parent="Margin/Box/Skills/WoodcuttingCard/WoodMargin/WoodBox"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 48)
+text = "Iniciar"
+theme_override_font_sizes/font_size = 18
+
+[node name="FishingCard" type="PanelContainer" parent="Margin/Box/Skills"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 240)
+
+[node name="FishMargin" type="MarginContainer" parent="Margin/Box/Skills/FishingCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="FishBox" type="VBoxContainer" parent="Margin/Box/Skills/FishingCard/FishMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FishTitle" type="Label" parent="Margin/Box/Skills/FishingCard/FishMargin/FishBox"]
+layout_mode = 2
+text = "Fishing"
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.85, 0.66, 0.22, 1)
+horizontal_alignment = 1
+
+[node name="FishDesc" type="Label" parent="Margin/Box/Skills/FishingCard/FishMargin/FishBox"]
+layout_mode = 2
+text = "Coletar River Trout (5.0s/ciclo)"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+horizontal_alignment = 1
+
+[node name="FishStats" type="Label" parent="Margin/Box/Skills/FishingCard/FishMargin/FishBox"]
+layout_mode = 2
+text = "Coletado: 0  |  Mastery: 0"
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+
+[node name="FishProgress" type="ProgressBar" parent="Margin/Box/Skills/FishingCard/FishMargin/FishBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 16)
+max_value = 1.0
+show_percentage = false
+
+[node name="FishButton" type="Button" parent="Margin/Box/Skills/FishingCard/FishMargin/FishBox"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 48)
+text = "Iniciar"
+theme_override_font_sizes/font_size = 18
+
+[node name="Footnote" type="Label" parent="Margin/Box"]
+layout_mode = 2
+text = "Apenas 1 skill ativa por vez (placeholder). Multi-personagem em paralelo chega na Fase 02."
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+horizontal_alignment = 1

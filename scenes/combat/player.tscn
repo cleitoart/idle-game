@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cin5th0m5xq6o"]
+
+[ext_resource type="Script" uid="uid://ywyellhk6xdr" path="res://scenes/combat/player.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/combat/hp_bar.tscn" id="2_hp"]
+[ext_resource type="Script" uid="uid://d0y6qb0paabbh" path="res://scenes/combat/shadow.gd" id="3_shadow"]
+[ext_resource type="Texture2D" uid="uid://cnnapfwgntoki" path="res://assets/sprites/effects/elipse_vfx000.png" id="4_shadow_tex"]
+
+[node name="Player" type="VBoxContainer" unique_id=457684987]
+custom_minimum_size = Vector2(260, 320)
+alignment = 1
+script = ExtResource("1_script")
+
+[node name="HpBar" parent="." unique_id=1910300658 instance=ExtResource("2_hp")]
+visible = false
+layout_mode = 2
+
+[node name="BodyStage" type="Control" parent="." unique_id=858594723]
+custom_minimum_size = Vector2(220, 220)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="Body" type="ColorRect" parent="BodyStage" unique_id=850043007]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Shadow" type="Sprite2D" parent="BodyStage" unique_id=259165938]
+texture = ExtResource("4_shadow_tex")
+script = ExtResource("3_shadow")
+
+[node name="WeaponSprite" type="Sprite2D" parent="BodyStage" unique_id=426916291]
+visible = false
+texture_filter = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BodyStage" unique_id=49694916]
+visible = false
+texture_filter = 1
+
+[node name="NameLabel" type="Label" parent="." unique_id=1645817108]
+visible = false
+layout_mode = 2
+text = "Player"
+horizontal_alignment = 1
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1136567572]
+
+[node name="IdleResumeTimer" type="Timer" parent="." unique_id=1135078304]
+one_shot = true
+
+[connection signal="resized" from="BodyStage" to="." method="_on_body_stage_resized"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="IdleResumeTimer" to="." method="_on_idle_resume_timer_timeout"]

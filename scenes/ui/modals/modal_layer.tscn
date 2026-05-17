@@ -1,19 +1,43 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scenes/ui/modals/modal_layer.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://scenes/ui/modals/character_modal.tscn" id="2_char"]
 [ext_resource type="PackedScene" path="res://scenes/ui/modals/map_modal.tscn" id="3_map"]
-[ext_resource type="PackedScene" path="res://scenes/ui/modals/inventory_modal.tscn" id="4_inv"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/dev_modal.tscn" id="6_dev"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/offline_summary_modal.tscn" id="7_offline"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/bestiary_modal.tscn" id="8_bestiary"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/area_results_modal.tscn" id="9_results"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/crafting_modal.tscn" id="10_crafting"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/skill_tree_modal.tscn" id="11_skill_tree"]
+[ext_resource type="PackedScene" path="res://scenes/ui/modals/character_details_modal.tscn" id="12_details"]
 
 [node name="ModalLayer" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_script")
 
-[node name="CharacterModal" parent="." instance=ExtResource("2_char")]
+[node name="AreaResultsModal" parent="." instance=ExtResource("9_results")]
+visible = false
+
+[node name="OfflineSummaryModal" parent="." instance=ExtResource("7_offline")]
 visible = false
 
 [node name="MapModal" parent="." instance=ExtResource("3_map")]
 visible = false
 
-[node name="InventoryModal" parent="." instance=ExtResource("4_inv")]
+[node name="DevModal" parent="." instance=ExtResource("6_dev")]
+visible = false
+
+[node name="BestiaryModal" parent="." instance=ExtResource("8_bestiary")]
+visible = false
+
+[node name="CraftingModal" parent="." instance=ExtResource("10_crafting")]
+visible = false
+
+[node name="CharacterModal" parent="." instance=ExtResource("2_char")]
+visible = false
+
+[node name="SkillTreeModal" parent="." instance=ExtResource("11_skill_tree")]
+visible = false
+
+[node name="CharacterDetailsModal" parent="." instance=ExtResource("12_details")]
 visible = false

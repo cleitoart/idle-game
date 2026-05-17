@@ -8,6 +8,13 @@ class Drop:
 		item = p_item
 		qty = p_qty
 
+# TODO Fase 02+: modular `entry.chance` por:
+#   - `player.loot_gain_pct` (modificador global de loot)
+#   - `player.material_drop_chance_pct` se entry.item.item_type == MATERIAL
+#   - `player.equip_drop_chance_pct` se entry.item.slot_type != NONE
+#   - tier base da raridade (ver `02_math/drop-rates.md` tabela base)
+#   - pity Mythic threshold 100 (decisao #8)
+# Hoje a chance e' flat conforme declarado no LootEntry.
 static func roll(enemy: EnemyData) -> Array:
 	var drops: Array = []
 	if enemy == null:

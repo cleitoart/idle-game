@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/notification_item.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="NotifBg"]
+bg_color = Color(0.10, 0.09, 0.08, 0.78)
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+
+[node name="NotificationItem" type="Control"]
+custom_minimum_size = Vector2(260, 50)
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("NotifBg")
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
+
+[node name="Row" type="HBoxContainer" parent="Panel/Margin"]
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Panel/Margin/Row"]
+custom_minimum_size = Vector2(34, 34)
+texture_filter = 1
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="Panel/Margin/Row"]
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Item"
+
+[node name="QtyLabel" type="Label" parent="Panel/Margin/Row"]
+custom_minimum_size = Vector2(48, 0)
+size_flags_vertical = 4
+text = "x1"
+horizontal_alignment = 2
+
+[node name="ExpireTimer" type="Timer" parent="."]
+one_shot = true

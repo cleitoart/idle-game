@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://ipbi2kbihn5l"]
+
+[ext_resource type="Script" uid="uid://c74ekcljoos6e" path="res://scenes/ui/tooltips/tooltip_manager.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://d2sgbcj6y2mde" path="res://assets/sprites/ui/tooltips/weapon_tooltip_panel.png" id="2_weapon_panel"]
+[ext_resource type="Theme" uid="uid://dc6qq0ib5rqip" path="res://assets/themes/default_theme.tres" id="3_theme"]
+
+[node name="TooltipManager" type="CanvasLayer" unique_id=638545666]
+layer = 20
+script = ExtResource("1_script")
+
+[node name="TooltipPanel" type="NinePatchRect" parent="." unique_id=1237787884]
+custom_minimum_size = Vector2(207, 0)
+offset_right = 207.0
+offset_bottom = 100.0
+theme = ExtResource("3_theme")
+texture = ExtResource("2_weapon_panel")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Margin" type="MarginContainer" parent="TooltipPanel" unique_id=274673470]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 7
+
+[node name="Content" type="VBoxContainer" parent="TooltipPanel/Margin" unique_id=660646771]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="HeaderBox" type="VBoxContainer" parent="TooltipPanel/Margin/Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -8
+
+[node name="NameLabel" type="Label" parent="TooltipPanel/Margin/Content/HeaderBox" unique_id=146821723]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Item Name"
+
+[node name="TypeLabel" type="Label" parent="TooltipPanel/Margin/Content/HeaderBox" unique_id=1362224975]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Type"
+
+[node name="DividerTop" type="TextureRect" parent="TooltipPanel/Margin/Content" unique_id=1208699019]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 0
+
+[node name="StatsContainer" type="VBoxContainer" parent="TooltipPanel/Margin/Content" unique_id=1530445653]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="DividerBottom" type="TextureRect" parent="TooltipPanel/Margin/Content" unique_id=1650905958]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 0
+
+[node name="DescriptionLabel" type="Label" parent="TooltipPanel/Margin/Content" unique_id=1235148492]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Description goes here."
+autowrap_mode = 2

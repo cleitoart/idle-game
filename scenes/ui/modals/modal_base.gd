@@ -19,10 +19,23 @@ func _ready() -> void:
 
 func open() -> void:
 	visible = true
+	# Animacao juicy padrao de aparicao (fade + scale do panel).
+	# Usa o panel container como alvo pra o scale parecer com pop centralizado.
+	Juicy.modal_appear(self, panel)
 	_on_open()
 
 func close() -> void:
-	visible = false
+	# Early return se ja invisivel — evita disparar tween de disappear
+	# sobre um modal escondido, cujo callback `t.finished -> visible=false`
+	# pode rodar DEPOIS de um open() concorrente e bagunçar tudo.
+	if not visible:
+		return
+	# Animacao juicy de desaparecimento, depois esconde de fato.
+	var t: Tween = Juicy.modal_disappear(self, panel)
+	if t != null:
+		t.finished.connect(func(): visible = false)
+	else:
+		visible = false
 	_on_close()
 
 func _on_open() -> void:

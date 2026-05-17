@@ -13,17 +13,15 @@ extends Resource
 @export var gold_max: int = 0
 
 @export_group("Sprite")
-@export var sprite_sheet: Texture2D
-@export var sprite_frame_width: int = 16
-@export var sprite_frame_height: int = 16
-@export var sprite_frame_count: int = 4
+# SpriteFrames configurado no editor com anims idle / walk / attack. Cada
+# animacao com sua propria FPS, loop e frames. Configuracao visual unica
+# (sem sprite-sheet legado separado).
+@export var sprite_frames: SpriteFrames
 @export var sprite_scale: int = 6
-@export var sprite_fps: float = 6.0
 
-func get_sprite_sheet() -> Texture2D:
-	if sprite_sheet != null:
-		return sprite_sheet
-	var path: String = "res://assets/sprites/%s.png" % String(id)
-	if ResourceLoader.exists(path):
-		return load(path)
-	return null
+@export_group("Shadow")
+@export var shadow_offset: Vector2 = Vector2.ZERO
+@export var shadow_radius: Vector2 = Vector2(46, 8)
+@export var shadow_color: Color = Color(0, 0, 0, 0.35)
+@export var shadow_pixelize: bool = false
+@export var shadow_pixel_size: int = 4

@@ -1,24 +1,441 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://ciwha2v3ddkbl"]
 
-[ext_resource type="Script" path="res://scenes/ui/footer.gd" id="1_script"]
-[ext_resource type="PackedScene" path="res://scenes/ui/footer_stats.tscn" id="2_stats"]
-[ext_resource type="PackedScene" path="res://scenes/ui/footer_character_select.tscn" id="3_pick"]
+[ext_resource type="Script" uid="uid://djgjcauym0qej" path="res://scenes/ui/footer.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/skill_slot.tscn" id="2_slot"]
+[ext_resource type="Texture2D" uid="uid://bffg36xk6vuga" path="res://assets/sprites/ui/footer/footer_panel_and_bg.png" id="3_footer_bg"]
+[ext_resource type="Texture2D" uid="uid://d228ere5dmjij" path="res://assets/sprites/ui/footer/portrait_slot.png" id="4_portrait"]
+[ext_resource type="Texture2D" uid="uid://c8lfcysmoxqyh" path="res://assets/sprites/ui/footer/divider_001_sep.png" id="5_divider"]
+[ext_resource type="Texture2D" uid="uid://cguffjxtwb4wm" path="res://assets/sprites/ui/footer/char_resources_slot.png" id="6_resources_bg"]
+[ext_resource type="Texture2D" uid="uid://ctpa8s5yscn5c" path="res://assets/sprites/ui/footer/main_stats_slot.png" id="7_stats_bg"]
+[ext_resource type="Texture2D" uid="uid://cpaud6cg0m7yn" path="res://assets/sprites/ui/footer/health_bar_slot.png" id="8_hp_track"]
+[ext_resource type="Texture2D" uid="uid://c6ejejfhyrkky" path="res://assets/sprites/ui/footer/mana_bar_slot.png" id="9_mp_track"]
+[ext_resource type="Texture2D" uid="uid://be1tebwdcgrru" path="res://assets/sprites/ui/footer/exp_bar_slot.png" id="10_xp_track"]
 
-[node name="Footer" type="PanelContainer"]
-custom_minimum_size = Vector2(0, 96)
+[sub_resource type="StyleBoxTexture" id="FooterBg"]
+texture = ExtResource("3_footer_bg")
+
+[sub_resource type="StyleBoxFlat" id="HpTransparentBg"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="HpTrailFill"]
+bg_color = Color(0.78, 0.32, 0.3, 1)
+
+[sub_resource type="StyleBoxFlat" id="HpFill"]
+bg_color = Color(0.42, 0.65, 0.42, 1)
+
+[sub_resource type="StyleBoxFlat" id="MpFill"]
+bg_color = Color(0.45, 0.58, 0.78, 1)
+
+[sub_resource type="StyleBoxFlat" id="XpFill"]
+bg_color = Color(0.949, 0.819, 0.298, 1)
+
+[node name="Footer" type="PanelContainer" unique_id=540763229]
+custom_minimum_size = Vector2(0, 227)
+theme_override_styles/panel = SubResource("FooterBg")
 script = ExtResource("1_script")
 
-[node name="Modes" type="Control" parent="."]
-custom_minimum_size = Vector2(0, 80)
-mouse_filter = 1
+[node name="Canvas" type="Control" parent="." unique_id=1578761020]
+layout_mode = 2
+mouse_filter = 2
 
-[node name="FooterStats" parent="Modes" instance=ExtResource("2_stats")]
+[node name="Portrait" type="TextureRect" parent="Canvas" unique_id=484578220]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 205.0
+offset_bottom = 205.0
+texture = ExtResource("4_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PortraitFill" type="ColorRect" parent="Canvas/Portrait" unique_id=658679573]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.3, 0.3, 0.3, 1)
 
-[node name="FooterCharacterSelect" parent="Modes" instance=ExtResource("3_pick")]
-anchors_preset = 15
+[node name="Divider" type="TextureRect" parent="Canvas" unique_id=617860861]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 14.0
+offset_right = 731.0
+offset_bottom = 205.0
+texture = ExtResource("5_divider")
+expand_mode = 1
+
+[node name="CharNameLabel" type="Label" parent="Canvas" unique_id=1977004676]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 14.0
+offset_right = 320.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 23
+text = "Warrior"
+
+[node name="CharLevelLabel" type="Label" parent="Canvas" unique_id=1241671918]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 14.0
+offset_right = 420.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 23
+text = "Lv. 1"
+
+[node name="ResourcesPanel" type="Control" parent="Canvas" unique_id=747728124]
+anchors_preset = 0
+offset_left = 218.0
+offset_top = 57.0
+offset_right = 562.0
+offset_bottom = 205.0
+mouse_filter = 2
+
+[node name="Bg" type="TextureRect" parent="Canvas/ResourcesPanel" unique_id=1200524828]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-visible = false
+mouse_filter = 2
+texture = ExtResource("6_resources_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HpKey" type="Label" parent="Canvas/ResourcesPanel" unique_id=667374444]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 14.0
+offset_right = 90.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "HP"
+
+[node name="HpHolder" type="Control" parent="Canvas/ResourcesPanel" unique_id=627581806]
+clip_contents = true
+anchors_preset = 0
+offset_left = 90.0
+offset_top = 19.0
+offset_right = 331.0
+offset_bottom = 39.0
+mouse_filter = 2
+
+[node name="HpTrailBar" type="ProgressBar" parent="Canvas/ResourcesPanel/HpHolder" unique_id=1829061286]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 239.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("HpTransparentBg")
+theme_override_styles/fill = SubResource("HpTrailFill")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="HpBar" type="ProgressBar" parent="Canvas/ResourcesPanel/HpHolder" unique_id=1210954454]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 239.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("HpTransparentBg")
+theme_override_styles/fill = SubResource("HpFill")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="HpTrack" type="TextureRect" parent="Canvas/ResourcesPanel/HpHolder" unique_id=413385289]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("8_hp_track")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HpValue" type="Label" parent="Canvas/ResourcesPanel/HpHolder" unique_id=1035454820]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 13
+text = "0 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MpKey" type="Label" parent="Canvas/ResourcesPanel" unique_id=1405531267]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 60.0
+offset_right = 90.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "MP"
+
+[node name="MpHolder" type="Control" parent="Canvas/ResourcesPanel" unique_id=783734248]
+clip_contents = true
+anchors_preset = 0
+offset_left = 90.0
+offset_top = 65.0
+offset_right = 331.0
+offset_bottom = 85.0
+mouse_filter = 2
+
+[node name="MpBar" type="ProgressBar" parent="Canvas/ResourcesPanel/MpHolder" unique_id=550769014]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 239.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("HpTransparentBg")
+theme_override_styles/fill = SubResource("MpFill")
+max_value = 1.0
+show_percentage = false
+
+[node name="MpTrack" type="TextureRect" parent="Canvas/ResourcesPanel/MpHolder" unique_id=808083414]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("9_mp_track")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MpValue" type="Label" parent="Canvas/ResourcesPanel/MpHolder" unique_id=1474745989]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 13
+text = "0 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XpKey" type="Label" parent="Canvas/ResourcesPanel" unique_id=385496071]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 105.0
+offset_right = 90.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "EXP"
+
+[node name="XpHolder" type="Control" parent="Canvas/ResourcesPanel" unique_id=99327725]
+clip_contents = true
+anchors_preset = 0
+offset_left = 90.0
+offset_top = 110.0
+offset_right = 331.0
+offset_bottom = 130.0
+mouse_filter = 2
+
+[node name="XpBar" type="ProgressBar" parent="Canvas/ResourcesPanel/XpHolder" unique_id=1647019798]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 239.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("HpTransparentBg")
+theme_override_styles/fill = SubResource("XpFill")
+max_value = 1.0
+show_percentage = false
+
+[node name="XpTrack" type="TextureRect" parent="Canvas/ResourcesPanel/XpHolder" unique_id=1638316514]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("10_xp_track")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="XpValue" type="Label" parent="Canvas/ResourcesPanel/XpHolder" unique_id=878066431]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 13
+text = "0 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainStatsPanel" type="Control" parent="Canvas" unique_id=401457340]
+anchors_preset = 0
+offset_left = 569.0
+offset_top = 57.0
+offset_right = 713.0
+offset_bottom = 206.0
+mouse_filter = 2
+
+[node name="Bg" type="TextureRect" parent="Canvas/MainStatsPanel" unique_id=658770547]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("7_stats_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AtkKey" type="Label" parent="Canvas/MainStatsPanel" unique_id=802505504]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 60.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "ATK"
+
+[node name="AtkValue" type="Label" parent="Canvas/MainStatsPanel" unique_id=145717589]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 14.0
+offset_right = 132.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="DefKey" type="Label" parent="Canvas/MainStatsPanel" unique_id=502326971]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 60.0
+offset_right = 60.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "DEF"
+
+[node name="DefValue" type="Label" parent="Canvas/MainStatsPanel" unique_id=2140795369]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 132.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="SpdKey" type="Label" parent="Canvas/MainStatsPanel" unique_id=1068695134]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 105.0
+offset_right = 60.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "SPD"
+
+[node name="SpdValue" type="Label" parent="Canvas/MainStatsPanel" unique_id=305316637]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 105.0
+offset_right = 132.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0.788, 0.741, 0.576, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "1.00"
+horizontal_alignment = 2
+
+[node name="SkillSlots" type="Control" parent="Canvas" unique_id=2003119936]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Slot0" parent="Canvas/SkillSlots" unique_id=786745241 instance=ExtResource("2_slot")]
+anchors_preset = 0
+offset_left = 750.0
+offset_top = 29.0
+offset_right = 838.0
+offset_bottom = 117.0
+
+[node name="Slot1" parent="Canvas/SkillSlots" unique_id=808106761 instance=ExtResource("2_slot")]
+anchors_preset = 0
+offset_left = 840.0
+offset_top = 29.0
+offset_right = 928.0
+offset_bottom = 117.0
+
+[node name="Slot2" parent="Canvas/SkillSlots" unique_id=987696864 instance=ExtResource("2_slot")]
+anchors_preset = 0
+offset_left = 930.0
+offset_top = 29.0
+offset_right = 1018.0
+offset_bottom = 117.0
+
+[node name="Slot3" parent="Canvas/SkillSlots" unique_id=1344518748 instance=ExtResource("2_slot")]
+anchors_preset = 0
+offset_left = 1019.0
+offset_top = 29.0
+offset_right = 1107.0
+offset_bottom = 117.0
+
+[node name="Slot4" parent="Canvas/SkillSlots" unique_id=574429632 instance=ExtResource("2_slot")]
+anchors_preset = 0
+offset_left = 750.0
+offset_top = 118.0
+offset_right = 838.0
+offset_bottom = 206.0
+
+[node name="Slot5" parent="Canvas/SkillSlots" unique_id=1198278406 instance=ExtResource("2_slot")]
+anchors_preset = 0
+offset_left = 840.0
+offset_top = 118.0
+offset_right = 928.0
+offset_bottom = 206.0
+
+[node name="Slot6" parent="Canvas/SkillSlots" unique_id=1145916582 instance=ExtResource("2_slot")]
+anchors_preset = 0
+offset_left = 930.0
+offset_top = 118.0
+offset_right = 1018.0
+offset_bottom = 206.0
+
+[node name="Slot7" parent="Canvas/SkillSlots" unique_id=963292977 instance=ExtResource("2_slot")]
+anchors_preset = 0
+offset_left = 1019.0
+offset_top = 118.0
+offset_right = 1107.0
+offset_bottom = 206.0

@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://p6rcgtd0oeg2"]
+
+[ext_resource type="Script" uid="uid://bl1ceubq7lx23" path="res://scenes/world/spawn_point.gd" id="1_spawn"]
+[ext_resource type="Script" uid="uid://ho7paytrvsle" path="res://scenes/world/portal.gd" id="2_portal"]
+
+[sub_resource type="NavigationPolygon" id="NavPoly_main"]
+agent_radius = 10.0
+vertices = PackedVector2Array(90, 210, 642, 210, 758, 210, 1222, 210, 1338, 210, 1830, 210, 90, 382, 642, 382, 758, 382, 1222, 382, 1338, 382, 1830, 382, 90, 402, 642, 402, 758, 402, 1222, 402, 1338, 402, 1830, 402, 90, 498, 642, 498, 758, 498, 1222, 498, 1338, 498, 1830, 498, 90, 518, 642, 518, 758, 518, 1222, 518, 1338, 518, 1830, 518, 90, 670, 642, 670, 758, 670, 1222, 670, 1338, 670, 1830, 670)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 7, 6), PackedInt32Array(1, 2, 8, 7), PackedInt32Array(2, 3, 9, 8), PackedInt32Array(3, 4, 10, 9), PackedInt32Array(4, 5, 11, 10), PackedInt32Array(6, 7, 13, 12), PackedInt32Array(8, 9, 15, 14), PackedInt32Array(9, 10, 16, 15), PackedInt32Array(10, 11, 17, 16), PackedInt32Array(12, 13, 19, 18), PackedInt32Array(14, 15, 21, 20), PackedInt32Array(16, 17, 23, 22), PackedInt32Array(18, 19, 25, 24), PackedInt32Array(19, 20, 26, 25), PackedInt32Array(20, 21, 27, 26), PackedInt32Array(22, 23, 29, 28), PackedInt32Array(24, 25, 31, 30), PackedInt32Array(25, 26, 32, 31), PackedInt32Array(26, 27, 33, 32), PackedInt32Array(27, 28, 34, 33), PackedInt32Array(28, 29, 35, 34)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(80, 200, 1840, 200, 1840, 680, 80, 680), PackedVector2Array(652, 392, 748, 392, 748, 488, 652, 488), PackedVector2Array(1232, 412, 1328, 412, 1328, 508, 1232, 508)])
+
+[sub_resource type="RectangleShape2D" id="RectShape_wall_top"]
+size = Vector2(1920, 200)
+
+[sub_resource type="RectangleShape2D" id="RectShape_wall_bottom"]
+size = Vector2(1920, 80)
+
+[sub_resource type="RectangleShape2D" id="RectShape_obstacle"]
+size = Vector2(96, 96)
+
+[sub_resource type="RectangleShape2D" id="RectShape_portal"]
+size = Vector2(96, 480)
+
+[node name="PrototypeArea1" type="Node2D" unique_id=279980962]
+
+[node name="Background" type="ColorRect" parent="." unique_id=535529228]
+offset_right = 1920.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.32, 0.32, 0.32, 1)
+
+[node name="GroundHint" type="ColorRect" parent="." unique_id=1194056017]
+offset_left = 80.0
+offset_top = 200.0
+offset_right = 1840.0
+offset_bottom = 680.0
+mouse_filter = 2
+color = Color(0.42, 0.42, 0.42, 1)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=2086701971]
+navigation_polygon = SubResource("NavPoly_main")
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=190070721]
+
+[node name="TopWall" type="CollisionShape2D" parent="Walls" unique_id=1180220740]
+position = Vector2(960, 100)
+shape = SubResource("RectShape_wall_top")
+
+[node name="BottomWall" type="CollisionShape2D" parent="Walls" unique_id=2027270408]
+position = Vector2(960, 720)
+shape = SubResource("RectShape_wall_bottom")
+
+[node name="Obstacle1" type="StaticBody2D" parent="." unique_id=1695312379]
+position = Vector2(700, 440)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle1" unique_id=1087771222]
+shape = SubResource("RectShape_obstacle")
+
+[node name="NavObstacle" type="NavigationObstacle2D" parent="Obstacle1"]
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+vertices = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
+
+[node name="Obstacle1Sprite" type="ColorRect" parent="Obstacle1" unique_id=1119073522]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(0.18, 0.18, 0.18, 1)
+
+[node name="Obstacle2" type="StaticBody2D" parent="." unique_id=310984976]
+position = Vector2(1280, 460)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2" unique_id=744128334]
+shape = SubResource("RectShape_obstacle")
+
+[node name="NavObstacle" type="NavigationObstacle2D" parent="Obstacle2"]
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+vertices = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
+
+[node name="Obstacle2Sprite" type="ColorRect" parent="Obstacle2" unique_id=1531035323]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(0.18, 0.18, 0.18, 1)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=720253607]
+position = Vector2(200, 440)
+
+[node name="SpawnPoint1" type="Marker2D" parent="." unique_id=1073847256]
+position = Vector2(500, 360)
+script = ExtResource("1_spawn")
+
+[node name="SpawnPoint2" type="Marker2D" parent="." unique_id=1645924522]
+position = Vector2(960, 540)
+script = ExtResource("1_spawn")
+
+[node name="SpawnPoint3" type="Marker2D" parent="." unique_id=2122139857]
+position = Vector2(1480, 380)
+script = ExtResource("1_spawn")
+
+[node name="RightPortal" type="Area2D" parent="." unique_id=1690815125]
+position = Vector2(1820, 440)
+script = ExtResource("2_portal")
+target_area_id = &"prototype_area_2"
+
+[node name="RightPortalShape" type="CollisionShape2D" parent="RightPortal" unique_id=191147986]
+shape = SubResource("RectShape_portal")
+
+[node name="RightPortalSprite" type="ColorRect" parent="RightPortal" unique_id=1129165093]
+offset_left = -16.0
+offset_top = -240.0
+offset_right = 16.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.55, 0.45, 0.2, 0.6)

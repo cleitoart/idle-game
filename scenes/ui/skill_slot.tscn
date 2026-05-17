@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/footer/skill_slot_000.png" id="1_slot"]
+
+[node name="SkillSlot" type="Control"]
+custom_minimum_size = Vector2(88, 88)
+mouse_filter = 1
+
+[node name="Bg" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("1_slot")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2

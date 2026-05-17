@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scenes/ui/modals/map_modal.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cjryrfd2rf2c5" path="res://assets/sprites/background/forest-bg000.png" id="2_bg"]
+
+[sub_resource type="StyleBoxTexture" id="MapPanelBg"]
+texture = ExtResource("2_bg")
+modulate_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="MapModal" type="Control"]
 anchors_preset = 15
@@ -23,7 +28,8 @@ anchor_bottom = 1.0
 mouse_filter = 1
 
 [node name="Panel" type="PanelContainer" parent="Center"]
-custom_minimum_size = Vector2(560, 360)
+custom_minimum_size = Vector2(720, 460)
+theme_override_styles/panel = SubResource("MapPanelBg")
 
 [node name="Margin" type="MarginContainer" parent="Center/Panel"]
 theme_override_constants/margin_left = 20
@@ -47,16 +53,62 @@ custom_minimum_size = Vector2(40, 32)
 
 [node name="Content" type="VBoxContainer" parent="Center/Panel/Margin/Box"]
 size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Tabs" type="HBoxContainer" parent="Center/Panel/Margin/Box/Content"]
+theme_override_constants/separation = 4
+
+[node name="TabCombat" type="Button" parent="Center/Panel/Margin/Box/Content/Tabs"]
+custom_minimum_size = Vector2(120, 36)
+toggle_mode = true
+button_pressed = true
+text = "Combat"
+theme_override_font_sizes/font_size = 14
+
+[node name="TabGathering" type="Button" parent="Center/Panel/Margin/Box/Content/Tabs"]
+custom_minimum_size = Vector2(120, 36)
+toggle_mode = true
+text = "Gathering"
+theme_override_font_sizes/font_size = 14
+
+[node name="CombatPane" type="VBoxContainer" parent="Center/Panel/Margin/Box/Content"]
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="ZonesRow" type="HBoxContainer" parent="Center/Panel/Margin/Box/Content/CombatPane"]
 theme_override_constants/separation = 8
 
-[node name="StageNameRow" type="Label" parent="Center/Panel/Margin/Box/Content"]
-text = "Location:"
-theme_override_font_sizes/font_size = 18
+[node name="AreasScroll" type="ScrollContainer" parent="Center/Panel/Margin/Box/Content/CombatPane"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="KillsRow" type="Label" parent="Center/Panel/Margin/Box/Content"]
-text = "Kills on this stage: 0"
+[node name="AreasBox" type="VBoxContainer" parent="Center/Panel/Margin/Box/Content/CombatPane/AreasScroll"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
 
-[node name="EnemiesTitle" type="Label" parent="Center/Panel/Margin/Box/Content"]
-text = "Enemies in this area:"
+[node name="GatheringPane" type="VBoxContainer" parent="Center/Panel/Margin/Box/Content"]
+visible = false
+size_flags_vertical = 3
+theme_override_constants/separation = 8
 
-[node name="EnemiesBox" type="VBoxContainer" parent="Center/Panel/Margin/Box/Content"]
+[node name="GatheringHint" type="Label" parent="Center/Panel/Margin/Box/Content/GatheringPane"]
+text = "Spots de coleta. Cada um e' uma 'batalha' onde voce mina/corta/pesca o alvo. Drops dependem da sua eficiencia (vs eff_req do alvo)."
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+autowrap_mode = 2
+
+[node name="GatheringScroll" type="ScrollContainer" parent="Center/Panel/Margin/Box/Content/GatheringPane"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SpotsList" type="VBoxContainer" parent="Center/Panel/Margin/Box/Content/GatheringPane/GatheringScroll"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="LegendRow" type="Label" parent="Center/Panel/Margin/Box/Content"]
+text = "Combat: highlighted = current stage. Locked = cinza. Gathering: clique pra entrar no spot."
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)

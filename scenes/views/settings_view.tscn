@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b4qkxmt2xvqv5"]
+
+[ext_resource type="Script" path="res://scenes/views/settings_view.gd" id="1_script"]
+
+[node name="SettingsView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Box" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Margin/Box"]
+layout_mode = 2
+text = "Settings"
+theme_override_font_sizes/font_size = 28
+
+[node name="Separator" type="HSeparator" parent="Margin/Box"]
+layout_mode = 2
+
+[node name="HpNumbersCheck" type="CheckBox" parent="Margin/Box"]
+layout_mode = 2
+text = "Show enemy HP numbers"
+theme_override_font_sizes/font_size = 16
+
+[node name="SaveSeparator" type="HSeparator" parent="Margin/Box"]
+layout_mode = 2
+
+[node name="SaveSection" type="Label" parent="Margin/Box"]
+layout_mode = 2
+text = "Save"
+theme_override_font_sizes/font_size = 20
+
+[node name="SaveNowBtn" type="Button" parent="Margin/Box"]
+layout_mode = 2
+text = "Salvar agora"
+custom_minimum_size = Vector2(220, 36)
+
+[node name="BackupManualBtn" type="Button" parent="Margin/Box"]
+layout_mode = 2
+text = "Backup manual"
+custom_minimum_size = Vector2(220, 36)
+
+[node name="SaveStatusLabel" type="Label" parent="Margin/Box"]
+layout_mode = 2
+text = ""
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.6, 0.85, 0.6, 1)
