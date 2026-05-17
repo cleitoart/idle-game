@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bq5x0kx7q6lq2"]
+
+[ext_resource type="Script" uid="uid://pfu77h52thug" path="res://scripts/data/item_data.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b18gv2mik3nlx" path="res://assets/sprites/items/armors/iron_armor_chestplate.png" id="2_sprite"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"iron_chest"
+display_name = "Iron Chestplate"
+stackable = false
+item_type = 3
+slot_type = 2
+bonus_def = 4
+bonus_max_hp = 10
+sprite = ExtResource("2_sprite")
+drop_icon = ExtResource("2_sprite")
+drop_scale = 0.4

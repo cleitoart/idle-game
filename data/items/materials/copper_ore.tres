@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://crisybhud3xu6"]
+
+[ext_resource type="Script" uid="uid://pfu77h52thug" path="res://scripts/data/item_data.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cnnapfwgntoki" path="res://assets/sprites/effects/elipse_vfx000.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"copper_ore"
+display_name = "Copper Ore"
+description = "Minerio de cobre bruto. Pode ser refinado em barras na fornalha."
+sprite = ExtResource("2_icon")
+drop_icon = ExtResource("2_icon")
+drop_scale = 0.15

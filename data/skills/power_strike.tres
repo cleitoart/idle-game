@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/skill_data.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/effects/cut_vfx000.png" id="2_vfx"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"power_strike"
+display_name = "Power Strike"
+description = "Golpe forte que causa 2x o ATK do personagem."
+is_heal = false
+damage_mult = 2.0
+heal_mult = 0.0
+cooldown_seconds = 5.0
+mp_cost = 0
+vfx_sprite = ExtResource("2_vfx")
+vfx_scale = 2.0

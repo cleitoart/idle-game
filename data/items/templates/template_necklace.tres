@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" uid="uid://pfu77h52thug" path="res://scripts/data/item_data.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/effects/elipse_vfx000.png" id="2_sprite"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"template_necklace"
+display_name = "Template Necklace"
+description = "Template - duplique e customize. Defina id, display_name, sprite e bonuses."
+stackable = false
+item_type = 4
+rarity = 0
+slot_type = 5
+item_level = 1
+bonus_max_mp = 10
+sprite = ExtResource("2_sprite")
+drop_icon = ExtResource("2_sprite")
+drop_scale = 0.3

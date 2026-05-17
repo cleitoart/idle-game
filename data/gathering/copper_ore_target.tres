@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OreTargetData" format=3 uid="uid://dcy4f3lm0yxjq"]
+
+[ext_resource type="Script" uid="uid://vfd8pw7fsuuc" path="res://scripts/data/ore_target_data.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://crisybhud3xu6" path="res://data/items/copper_ore.tres" id="2_item"]
+[ext_resource type="Texture2D" uid="uid://mu5xkpv4mq71" path="res://assets/sprites/gathering/mining/ore-cluster-base.png" id="3_base"]
+[ext_resource type="Texture2D" uid="uid://7y6endroomef" path="res://assets/sprites/gathering/mining/ore-cluster-copper.png" id="4_cluster"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"copper_ore_target"
+display_name = "Veio de Cobre"
+description = "Veio basico de cobre. Bom pra comecar."
+drop_item = ExtResource("2_item")
+eff_req = 12
+respawn_seconds = 25.0
+base_texture = ExtResource("3_base")
+cluster_texture = ExtResource("4_cluster")
+sprite_scale = 5.0
+cluster_y_offset_px = -8.5

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GatheringSpotData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/gathering_spot_data.gd" id="1_script"]
+[ext_resource type="Resource" path="res://data/gathering/iron_ore_target.tres" id="2_target"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"iron_spot_forest"
+display_name = "Mina de Ferro"
+description = "Spot intermediario. Requer mais eficiencia que cobre."
+activity = &"mining"
+targets = [ExtResource("2_target"), ExtResource("2_target"), ExtResource("2_target"), ExtResource("2_target"), ExtResource("2_target")]
+zone_id = &"forest"
+level = 3

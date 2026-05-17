@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://36s6nkogsgjk"]
+
+[ext_resource type="Script" uid="uid://ygavkt4elkrv" path="res://scripts/data/enemy_data.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dk45ki6kr5ah8" path="res://scripts/data/loot_entry.gd" id="2_loot"]
+[ext_resource type="Resource" uid="uid://m7juo5cgu1fp" path="res://data/items/slime_goo.tres" id="3_goo"]
+[ext_resource type="Texture2D" uid="uid://bgcbxkcyiprm0" path="res://assets/sprites/enemies/slime.png" id="4_sheet"]
+
+[sub_resource type="Resource" id="LootEntry_goo"]
+script = ExtResource("2_loot")
+item = ExtResource("3_goo")
+chance = 0.65
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_217tg"]
+atlas = ExtResource("4_sheet")
+region = Rect2(0, 0, 14, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be802"]
+atlas = ExtResource("4_sheet")
+region = Rect2(14, 0, 14, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhn1y"]
+atlas = ExtResource("4_sheet")
+region = Rect2(28, 0, 14, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u1yp"]
+atlas = ExtResource("4_sheet")
+region = Rect2(42, 0, 14, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_imshb"]
+animations = [{
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_217tg")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_be802")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_lhn1y")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_5u1yp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_script")
+id = &"blue_slime"
+display_name = "Blue Slime"
+level = 2
+hp = 22
+atk = 3
+loot_table = [SubResource("LootEntry_goo")]
+gold_min = 2
+gold_max = 4
+sprite_frames = SubResource("SpriteFrames_imshb")
+sprite_scale = 5

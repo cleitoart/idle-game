@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" uid="uid://pfu77h52thug" path="res://scripts/data/item_data.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/armors/iron_armor_helmet.png" id="2_sprite"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"template_helmet"
+display_name = "Template Helmet"
+description = "Template - duplique e customize. Defina id, display_name, sprite e bonuses."
+stackable = false
+item_type = 3
+rarity = 0
+slot_type = 1
+item_level = 1
+bonus_def = 2
+bonus_max_hp = 5
+sprite = ExtResource("2_sprite")
+drop_icon = ExtResource("2_sprite")
+drop_scale = 0.4

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ToolData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/tool_data.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/pickaxes/copper-pickaxe.png" id="2_sprite"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"copper_pickaxe"
+display_name = "Copper Pickaxe"
+description = "Picareta de cobre simples. Bom upgrade da Worn — primeira picareta forjada."
+stackable = false
+item_type = 5
+rarity = 0
+slot_type = 10
+item_level = 2
+bonus_mining_efficiency = 4
+sprite = ExtResource("2_sprite")
+drop_icon = ExtResource("2_sprite")
+drop_scale = 0.4
+world_sprite = ExtResource("2_sprite")
+world_offset = Vector2(0, 0)
+world_rotation = 0.0
+world_scale = 1.0

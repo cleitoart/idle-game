@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/skill_data.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/effects/elipse_vfx001.png" id="2_vfx"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"quick_heal"
+display_name = "Quick Heal"
+description = "Cura 20% do HP maximo."
+is_heal = true
+damage_mult = 0.0
+heal_mult = 0.2
+cooldown_seconds = 15.0
+mp_cost = 10
+vfx_sprite = ExtResource("2_vfx")
+vfx_scale = 1.5

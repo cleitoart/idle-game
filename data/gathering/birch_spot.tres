@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GatheringSpotData" format=3 uid="uid://ds8b3qbc8iowa"]
+
+[ext_resource type="Script" uid="uid://c1a7rffnt3edm" path="res://scripts/data/gathering_spot_data.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://4g4r5bgd5whf" path="res://data/gathering/birch_tree_target.tres" id="2_target"]
+[ext_resource type="Script" uid="uid://b1yg83r20icsc" path="res://scripts/data/gather_target_data.gd" id="2_xwmc4"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"birch_spot_forest"
+display_name = "Bosque de Bétulas"
+description = "Spot inicial de woodcutting na Floresta. 5 bétulas de pé."
+activity = &"woodcutting"
+targets = Array[ExtResource("2_xwmc4")]([ExtResource("2_target"), ExtResource("2_target"), ExtResource("2_target"), ExtResource("2_target"), ExtResource("2_target")])

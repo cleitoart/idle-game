@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cjnjn2ftkhcvh"]
+
+[ext_resource type="Script" uid="uid://pfu77h52thug" path="res://scripts/data/item_data.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bys5wcfcvsec6" path="res://assets/sprites/items/armors/iron_armor_leggings.png" id="2_sprite"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"iron_legs"
+display_name = "Iron Leggings"
+stackable = false
+item_type = 3
+slot_type = 3
+bonus_def = 3
+bonus_max_hp = 7
+sprite = ExtResource("2_sprite")
+drop_icon = ExtResource("2_sprite")
+drop_scale = 0.4

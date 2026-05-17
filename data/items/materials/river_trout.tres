@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" uid="uid://pfu77h52thug" path="res://scripts/data/item_data.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/effects/cross_vfx000.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"river_trout"
+display_name = "River Trout"
+description = "Truta-de-rio comum. Ingrediente basico de cozinha."
+stackable = true
+item_type = 0
+rarity = 0
+slot_type = 0
+item_level = 1
+sprite = ExtResource("2_icon")
+drop_icon = ExtResource("2_icon")
+drop_scale = 0.15

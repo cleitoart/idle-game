@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TreeTargetData" format=3 uid="uid://4g4r5bgd5whf"]
+
+[ext_resource type="Script" uid="uid://bgm44sebop4s3" path="res://scripts/data/tree_target_data.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://dd1b5p6l3il0" path="res://data/items/birch_log.tres" id="2_item"]
+[ext_resource type="Texture2D" uid="uid://bvhwmigsx55lo" path="res://assets/sprites/gathering/chopping/birch_tree_base.png" id="3_base"]
+[ext_resource type="Texture2D" uid="uid://s15i7me0to3e" path="res://assets/sprites/gathering/chopping/birch_tree_trunk.png" id="4_trunk"]
+[ext_resource type="Texture2D" uid="uid://daooi4e6xjwmv" path="res://assets/sprites/gathering/chopping/birch_tree_leaf000.png" id="5_leaves_back"]
+[ext_resource type="Texture2D" uid="uid://bmqy37hc1ckiw" path="res://assets/sprites/gathering/chopping/birch_tree_leaf001.png" id="6_leaves_front"]
+
+[resource]
+script = ExtResource("1_script")
+base_texture = ExtResource("3_base")
+trunk_texture = ExtResource("4_trunk")
+leaves_back_texture = ExtResource("5_leaves_back")
+leaves_front_texture = ExtResource("6_leaves_front")
+trunk_x_offset_px = -0.5
+trunk_y_offset_px = -15.0
+leaves_back_x_offset_px = -7.5
+leaves_back_y_offset_px = -19.0
+leaves_front_y_offset_px = -33.0
+id = &"birch_tree_target"
+display_name = "Bétula"
+description = "Bétula jovem. Tronco esguio, folhagem rala. Bom inicio de woodcutting."
+drop_item = ExtResource("2_item")
+eff_req = 12
+respawn_seconds = 25.0
+sprite_scale = 5.0

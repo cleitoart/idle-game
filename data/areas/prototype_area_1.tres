@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AreaSceneData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/area_scene_data.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/world/areas/prototype_area_1.tscn" id="2_scene"]
+[ext_resource type="Resource" uid="uid://c3icnca8rdhts" path="res://data/enemies/green_slime.tres" id="3_green"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"prototype_area_1"
+display_name = "Prototype Area 1"
+scene = ExtResource("2_scene")
+enemies = Array[Resource]([ExtResource("3_green")])
+max_concurrent_enemies = 3
+respawn_seconds = 8.0

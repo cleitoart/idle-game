@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://ch00mfgx5vbkd"]
+
+[ext_resource type="Script" uid="uid://ygavkt4elkrv" path="res://scripts/data/enemy_data.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dk45ki6kr5ah8" path="res://scripts/data/loot_entry.gd" id="2_loot"]
+[ext_resource type="Resource" uid="uid://m7juo5cgu1fp" path="res://data/items/slime_goo.tres" id="3_goo"]
+[ext_resource type="Texture2D" uid="uid://cohyhrqyhu2bn" path="res://assets/sprites/enemies/purple_slime.png" id="4_sheet"]
+
+[sub_resource type="Resource" id="LootEntry_goo"]
+script = ExtResource("2_loot")
+item = ExtResource("3_goo")
+chance = 0.7
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o488x"]
+atlas = ExtResource("4_sheet")
+region = Rect2(0, 0, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyq22"]
+atlas = ExtResource("4_sheet")
+region = Rect2(16, 0, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw67w"]
+atlas = ExtResource("4_sheet")
+region = Rect2(32, 0, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4onjr"]
+atlas = ExtResource("4_sheet")
+region = Rect2(48, 0, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imtwb"]
+atlas = ExtResource("4_sheet")
+region = Rect2(64, 0, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqged"]
+atlas = ExtResource("4_sheet")
+region = Rect2(80, 0, 16, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4okei"]
+animations = [{
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_o488x")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_fyq22")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_hw67w")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_4onjr")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_imtwb")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_aqged")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_script")
+id = &"purple_slime"
+display_name = "Purple Slime"
+level = 3
+hp = 38
+atk = 4
+attack_speed = 0.55
+loot_table = [SubResource("LootEntry_goo")]
+gold_min = 3
+gold_max = 6
+sprite_frames = SubResource("SpriteFrames_4okei")
+sprite_scale = 5

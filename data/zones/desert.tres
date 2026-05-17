@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="ZoneData" format=3 uid="uid://wjprj2ilj681"]
+
+[ext_resource type="Script" uid="uid://bklc77yc81b47" path="res://scripts/data/zone_data.gd" id="1_zone"]
+[ext_resource type="Script" uid="uid://ofjg68ek7fro" path="res://scripts/data/area_data.gd" id="2_area"]
+[ext_resource type="Script" uid="uid://ygavkt4elkrv" path="res://scripts/data/enemy_data.gd" id="2_td0ix"]
+[ext_resource type="Resource" uid="uid://co8r7ncwdo52a" path="res://data/enemies/red_slime.tres" id="3_red"]
+[ext_resource type="Resource" uid="uid://ch00mfgx5vbkd" path="res://data/enemies/purple_slime.tres" id="4_purple"]
+[ext_resource type="Resource" uid="uid://36s6nkogsgjk" path="res://data/enemies/blue_slime.tres" id="5_blue"]
+[ext_resource type="Resource" uid="uid://c3icnca8rdhts" path="res://data/enemies/green_slime.tres" id="6_green"]
+[ext_resource type="Texture2D" uid="uid://0c2yknr0im1j" path="res://assets/sprites/background/desert-bg000.png" id="7_bg"]
+
+[sub_resource type="Resource" id="A1"]
+script = ExtResource("2_area")
+id = &"desert_a1"
+display_name = "Desert Area 1"
+enemies = Array[ExtResource("2_td0ix")]([ExtResource("6_green"), ExtResource("5_blue")])
+base_wave_size_min = 2
+base_wave_size_max = 3
+top_wave_size_min = 3
+top_wave_size_max = 5
+
+[sub_resource type="Resource" id="A2"]
+script = ExtResource("2_area")
+id = &"desert_a2"
+display_name = "Desert Area 2"
+enemies = Array[ExtResource("2_td0ix")]([ExtResource("5_blue"), ExtResource("4_purple")])
+base_wave_size_min = 2
+base_wave_size_max = 3
+top_wave_size_min = 4
+top_wave_size_max = 6
+
+[sub_resource type="Resource" id="A3"]
+script = ExtResource("2_area")
+id = &"desert_a3"
+display_name = "Desert Area 3"
+enemies = Array[ExtResource("2_td0ix")]([ExtResource("4_purple")])
+base_wave_size_min = 3
+base_wave_size_max = 4
+top_wave_size_min = 4
+top_wave_size_max = 6
+
+[sub_resource type="Resource" id="A4"]
+script = ExtResource("2_area")
+id = &"desert_a4"
+display_name = "Desert Area 4"
+enemies = Array[ExtResource("2_td0ix")]([ExtResource("4_purple"), ExtResource("3_red")])
+base_wave_size_min = 3
+base_wave_size_max = 4
+top_wave_size_min = 4
+top_wave_size_max = 7
+
+[sub_resource type="Resource" id="A5"]
+script = ExtResource("2_area")
+id = &"desert_a5"
+display_name = "Desert Area 5"
+enemies = Array[ExtResource("2_td0ix")]([ExtResource("3_red")])
+base_wave_size_min = 3
+base_wave_size_max = 4
+top_wave_size_min = 5
+top_wave_size_max = 8
+bonus_waves_at_last_stage = 2
+
+[resource]
+script = ExtResource("1_zone")
+id = &"desert"
+display_name = "Desert"
+background = ExtResource("7_bg")
+areas = Array[ExtResource("2_area")]([SubResource("A1"), SubResource("A2"), SubResource("A3"), SubResource("A4"), SubResource("A5")])
+level_offset = 5
+difficulty_growth = 0.12

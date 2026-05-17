@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="OreTargetData" format=3 uid="uid://dpg7l2b68vt8e"]
+
+[ext_resource type="Script" uid="uid://vfd8pw7fsuuc" path="res://scripts/data/ore_target_data.gd" id="1_script"]
+[ext_resource type="Resource" path="res://data/items/iron_ore.tres" id="2_item"]
+[ext_resource type="Texture2D" uid="uid://mu5xkpv4mq71" path="res://assets/sprites/gathering/mining/ore-cluster-base.png" id="3_base"]
+[ext_resource type="Texture2D" uid="uid://yaxrarsit43p" path="res://assets/sprites/gathering/mining/ore-cluster-iron.png" id="4_cluster"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"iron_ore_target"
+display_name = "Veio de Ferro"
+description = "Veio de ferro. Requer maior eficiencia."
+drop_item = ExtResource("2_item")
+eff_req = 35
+max_hits = 60
+respawn_seconds = 35.0
+level = 3
+base_texture = ExtResource("3_base")
+cluster_texture = ExtResource("4_cluster")
+sprite_scale = 5.0
+cluster_y_offset_px = -8.5
+cluster_x_offset_px = -0.5

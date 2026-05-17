@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GatheringSpotData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/gathering_spot_data.gd" id="1_script"]
+[ext_resource type="Resource" path="res://data/gathering/copper_ore_target.tres" id="2_target"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"copper_spot_forest"
+display_name = "Pequena Mina de Cobre"
+description = "Spot inicial de mineracao na Floresta. 5 veios de cobre."
+activity = &"mining"
+targets = [ExtResource("2_target"), ExtResource("2_target"), ExtResource("2_target"), ExtResource("2_target"), ExtResource("2_target")]
+zone_id = &"forest"
+level = 1
