@@ -18,19 +18,20 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GDAIMCPRuntime="*uid://dcne7ryelpxmn"
+GDAIMCPRuntime="*res://addons/gdai-mcp-plugin-godot/gdai_mcp_runtime.gd"
 EventBus="*res://autoload/event_bus.gd"
+ItemRegistry="*res://autoload/item_registry.gd"
+SaveManager="*res://autoload/save_manager.gd"
+Bestiary="*res://autoload/bestiary.gd"
 GameState="*res://autoload/game_state.gd"
+BattleLog="*res://autoload/battle_log.gd"
+TooltipManager="*res://scenes/ui/tooltips/tooltip_manager.tscn"
+DragManager="*res://scenes/ui/drag/drag_manager.tscn"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
+window/size/mode=4
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+window/stretch/aspect="ignore"

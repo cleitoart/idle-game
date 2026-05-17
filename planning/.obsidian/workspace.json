@@ -1,0 +1,282 @@
+{
+  "main": {
+    "id": "90c3e468ee9a055f",
+    "type": "split",
+    "children": [
+      {
+        "id": "a95df4719934803e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "80b7ed983da953aa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01_design/cards-catalog.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "cards-catalog"
+            }
+          },
+          {
+            "id": "e81ab7135ac871d0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03_research/synthesis/decisions-needed.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "decisions-needed"
+            }
+          },
+          {
+            "id": "2a6e9e4eb75041d3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03_research/synthesis/01-stats-and-progression.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01-stats-and-progression"
+            }
+          },
+          {
+            "id": "923d9cd655146679",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03_research/synthesis/02-active-vs-idle-balance.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "02-active-vs-idle-balance"
+            }
+          },
+          {
+            "id": "084a2e64e9eef8c7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03_research/synthesis/03-combat-classes-skills.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "03-combat-classes-skills"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c4bcd396087d2149",
+    "type": "split",
+    "children": [
+      {
+        "id": "80e14ba9207aa98b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c6d03f8467b37911",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "3c269224fff61414",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "565033823fc390b6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "7c6aa045a66e9024",
+    "type": "split",
+    "children": [
+      {
+        "id": "b8c3422393eb1003",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1553e06e68c9ad67",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "01_design/gathering-materials.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos para gathering-materials"
+            }
+          },
+          {
+            "id": "16c37294c2976c7b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "01_design/gathering-materials.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída para gathering-materials"
+            }
+          },
+          {
+            "id": "08cb2e50cc1d2fc2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "d8e879217ab30f33",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "6adc302455f0e3f8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "01_design/gathering-materials.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário de gathering-materials"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "e81ab7135ac871d0",
+  "lastOpenFiles": [
+    "01_design/cards-catalog.md",
+    "03_research/synthesis/decisions-needed.md",
+    "03_research/synthesis/03-combat-classes-skills.md",
+    "03_research/synthesis/02-active-vs-idle-balance.md",
+    "03_research/synthesis/01-stats-and-progression.md",
+    "03_research/synthesis/06-meta-progression-and-mechanics.md",
+    "03_research/synthesis/04-items-crafting-equipment.md",
+    "03_research/synthesis/README.md",
+    "01_design/ui-ux-wireframes.md",
+    "03_research/synthesis/05-zones-enemies-quests-npcs.md",
+    "03_research/synthesis/05-zones-enemies-quests-npcs.md.tmp.39204.24fa40687e2f",
+    "03_research/synthesis/04-items-crafting-equipment.md.tmp.39204.368c7bebdbc5",
+    "03_research/synthesis/03-combate-classes-skills.md",
+    "03_research/synthesis",
+    "04_phases/phase-02-expansion.md",
+    "04_phases/phase-01-core-loops.md",
+    "03_research/idle-genre-patterns.md",
+    "03_research/gacha-patterns.md",
+    "01_design/equipment-catalog.md",
+    "00_meta/psd-workflow.md.tmp.42560.1778543937155",
+    "01_design/classes-and-characters.md",
+    "02_math/ascension-multipliers.md",
+    "05_juicy/feedback-language.md",
+    "02_math/drop-rates.md",
+    "02_math/balance-tables.md",
+    "01_design/events-catalog.md",
+    "01_design/enemies-catalog.md",
+    "01_design/crafting-catalog.md",
+    "01_design/audio-needs.md",
+    "01_design/account-vs-character.md",
+    "00_meta/glossary.md.tmp.26456.1778137231861",
+    "README.md.tmp.26456.1778134223703",
+    "02_math/progression-curves.md.tmp.45792.1778085882776",
+    "00_meta/glossary.md.tmp.45792.1778085873880",
+    "04_phases/phase-03-mid-game.md.tmp.45792.1778085862008",
+    "02_math/drop-rates.md.tmp.45792.1778085849687"
+  ]
+}

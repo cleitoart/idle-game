@@ -11,3 +11,9 @@ export_presets.cfg
 .DS_Store
 Thumbs.db
 *.swp
+
+# Art workflow sources (heavy binaries — not deliverables)
+psd-files/
+
+# Accidental temp/log files dropped at repo root
+/cd*.txt
