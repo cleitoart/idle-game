@@ -1,0 +1,107 @@
+# quest_resource.gd
+# ------------------------------------------------------------------
+# Core quest resource with full validation, logging, and type safety.
+# ------------------------------------------------------------------
+extends Resource
+class_name QuestResource
+
+## ------------------------------------------------------------------
+## 1. Logging helper (uses Godot's push_warning/push_error)
+## In production, replace with a proper logger singleton.
+## ------------------------------------------------------------------
+static func _log(level: int, message: String) -> void:
+	if level == 0:
+		push_warning("QuestResource: " + message)
+	elif level == 1:
+		push_error("QuestResource: " + message)
+	else:
+		print("QuestResource: " + message)
+
+## ------------------------------------------------------------------
+## 2. Exported properties with full type annotations.
+## ------------------------------------------------------------------
+@export var npc_id: String = "" :
+	set(value):
+		if value.is_empty():
+			_log(0, "npc_id cannot be empty. Leaving unchanged.")
+			return
+		npc_id = value
+		emit_changed()
+
+@export var title: String = "" :
+	set(value):
+		if value.is_empty():
+			_log(0, "title cannot be empty. Leaving unchanged.")
+			return
+		title = value
+		emit_changed()
+
+@export var description: String = "" :
+	set(value):
+		description = value
+		emit_changed()
+
+@export var objective: Resource :
+	set(value):
+		if value != null and not value is QuestObjective:
+			_log(1, "objective must be a QuestObjective resource.")
+			return
+		objective = value
+		emit_changed()
+
+@export var rewards: Resource :
+	set(value):
+		if value != null and not value is QuestRewards:
+			_log(1, "rewards must be a QuestRewards resource.")
+			return
+		rewards = value
+		emit_changed()
+
+## ------------------------------------------------------------------
+## 3. Validation method – returns true if all fields are valid.
+## Logs errors using _log.
+## ------------------------------------------------------------------
+func validate() -> bool:
+	var valid := true
+
+	# Check required string fields
+	if npc_id.is_empty():
+		_log(1, "npc_id is empty.")
+		valid = false
+	if title.is_empty():
+		_log(1, "title is empty.")
+		valid = false
+	if description.is_empty():
+		_log(0, "description is empty. (Optional but recommended)")
+
+	# Check objective resource
+	if objective == null:
+		_log(1, "objective resource is null.")
+		valid = false
+	elif not objective.validate():
+		_log(1, "objective resource failed validation.")
+		valid = false
+
+	# Check rewards resource
+	if rewards == null:
+		_log(1, "rewards resource is null.")
+		valid = false
+	elif not rewards.validate():
+		_log(1, "rewards resource failed validation.")
+		valid = false
+
+	return valid
+
+## ------------------------------------------------------------------
+## 4. _init – calls validate() for early detection of misconfiguration.
+##    In production, you may comment this out if resource loading is slow.
+## ------------------------------------------------------------------
+func _init() -> void:
+	# Only validate when the resource has been fully constructed
+	# (e.g., after loading from disk). Use call_deferred to avoid
+	# blocking the scene tree.
+	call_deferred("_deferred_validate")
+
+func _deferred_validate() -> void:
+	if not validate():
+		_log(1, "Quest resource has validation errors: %s" % resource_path)
