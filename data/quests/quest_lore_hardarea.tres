@@ -1,0 +1,101 @@
+# scripts/quest_resource.gd
+class_name QuestResource
+extends Resource
+
+## Custom resource defining a quest with objectives and rewards.
+
+const VALID_OBJECTIVE_TYPES := ["kill", "gather", "reach_area"]
+const VALID_REWARD_TYPES := ["gold", "xp", "unlock_recipe", "trickle"]
+
+@export var quest_name: String = "" :
+	set(value):
+		if value.is_empty():
+			push_error("Quest name cannot be empty.")
+			return
+		_quest_name = value
+
+@export var npc_id: String = "" :
+	set(value):
+		if value.is_empty():
+			push_error("NPC ID cannot be empty.")
+			return
+		_npc_id = value
+
+@export var objectives: Array[Dictionary] = [] :
+	set(value):
+		if not _validate_objectives(value):
+			push_error("Invalid objectives array.")
+			return
+		_objectives = value
+
+@export var rewards: Array[Dictionary] = [] :
+	set(value):
+		if not _validate_rewards(value):
+			push_error("Invalid rewards array.")
+			return
+		_rewards = value
+
+func _validate_objectives(objs: Array) -> bool:
+	if objs.is_empty():
+		push_error("At least one objective required.")
+		return false
+	for obj in objs:
+		if not obj is Dictionary:
+			push_error("Each objective must be a Dictionary.")
+			return false
+		var obj_type = obj.get("type", "missing")
+		if not obj.has("type") or obj_type not in VALID_OBJECTIVE_TYPES:
+			push_error("Invalid objective type: %s" % obj.get("type", "missing"))
+			return false
+		match obj_type:
+			"kill", "gather":
+				if not obj.has("target_id") or not obj.has("amount"):
+					push_error("Objective '%s' requires 'target_id' and 'amount'." % obj_type)
+					return false
+				if obj.get("amount", 0) <= 0:
+					push_error("Objective amount must be positive.")
+					return false
+			"reach_area":
+				if not obj.has("area_id"):
+					push_error("Objective 'reach_area' requires 'area_id'.")
+					return false
+	return true
+
+func _validate_rewards(rews: Array) -> bool:
+	if rews.is_empty():
+		push_warning("Quest has no rewards.")
+		# Allow empty rewards but warn.
+	for rew in rews:
+		if not rew is Dictionary:
+			push_error("Each reward must be a Dictionary.")
+			return false
+		var rew_type = rew.get("type", "missing")
+		if not rew.has("type") or rew_type not in VALID_REWARD_TYPES:
+			push_error("Invalid reward type: %s" % rew.get("type", "missing"))
+			return false
+		match rew_type:
+			"gold", "xp":
+				if not rew.has("amount") or rew.get("amount", 0) <= 0:
+					push_error("Reward amount must be positive.")
+					return false
+			"unlock_recipe":
+				if not rew.has("recipe_id"):
+					push_error("Reward 'unlock_recipe' requires 'recipe_id'.")
+					return false
+			"trickle":
+				if not rew.has("item_id") or not rew.has("amount"):
+					push_error("Reward 'trickle' requires 'item_id' and 'amount'.")
+					return false
+				if rew.get("amount", 0) <= 0:
+					push_error("Trickle amount must be positive.")
+					return false
+	return true
+
+## Creates a new QuestResource from a dictionary (useful for deserialization).
+static func from_dict(data: Dictionary) -> QuestResource:
+	var quest := QuestResource.new()
+	quest.quest_name = data.get("quest_name", "")
+	quest.npc_id = data.get("npc_id", "")
+	quest.objectives = data.get("objectives", [])
+	quest.rewards = data.get("rewards", [])
+	return quest

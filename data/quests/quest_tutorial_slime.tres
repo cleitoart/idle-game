@@ -1,0 +1,200 @@
+# scripts/quest_resource.gd
+class_name QuestResource
+extends Resource
+
+# ==============================================================================
+# Quest Resource Script - Defines quest data structure with validation and logging
+# ==============================================================================
+## Represents a quest with objectives, rewards, and related NPC.
+## Use with .tres files to define quests in the game.
+
+# -----------------------------------------------------------------------------
+# Enums
+# -----------------------------------------------------------------------------
+## Types of objectives available in quests
+enum ObjectiveType { KILL = 0, COLLECT = 1, REACH_AREA = 2 }
+
+## Types of rewards
+enum RewardType { GOLD = 0, XP = 1, ITEM = 2, RECIPE = 3 }
+
+# -----------------------------------------------------------------------------
+# Constants
+# -----------------------------------------------------------------------------
+const LOG_NAME := "QuestResource"
+const MIN_GOLD := 0
+const MAX_GOLD := 1_000_000
+const MIN_XP := 0
+const MAX_XP := 100_000
+const MIN_OBJECTIVE_COUNT := 1
+const MAX_OBJECTIVE_COUNT := 20
+const VALID_NPC_IDS := PackedStringArray(["tutorial-giver", "merchant", "lore"])
+const VALID_AREA_NAMES := PackedStringArray(["area_1", "area_2", "area_3", "hard_area"])
+
+# -----------------------------------------------------------------------------
+# Fields
+# -----------------------------------------------------------------------------
+@export var npc_id: String = "":
+	set(value):
+		if value.strip_edges() == "":
+			push_error("%s: npc_id cannot be empty." % LOG_NAME)
+			return
+		if not value in VALID_NPC_IDS:
+			push_error("%s: Invalid npc_id '%s'. Must be one of: %s" % [LOG_NAME, value, VALID_NPC_IDS])
+			return
+		npc_id = value
+
+@export var quest_title: String = "":
+	set(value):
+		if value.strip_edges() == "":
+			push_error("%s: quest_title cannot be empty." % LOG_NAME)
+			return
+		if len(value) > 128:
+			push_error("%s: quest_title too long (%d chars max 128)." % [LOG_NAME, len(value)])
+			return
+		quest_title = value
+
+@export var quest_description: String = "":
+	set(value):
+		if value.strip_edges() == "":
+			push_error("%s: quest_description cannot be empty." % LOG_NAME)
+			return
+		if len(value) > 1024:
+			push_error("%s: quest_description too long (%d chars max 1024)." % [LOG_NAME, len(value)])
+			return
+		quest_description = value
+
+@export var objectives: Array[Dictionary] = []:
+	set(value):
+		if value.is_empty():
+			push_error("%s: objectives array cannot be empty." % LOG_NAME)
+			return
+		for i in range(value.size()):
+			var obj := value[i] as Dictionary
+			if obj == null or obj.is_empty():
+				push_error("%s: objective at index %d is invalid or empty." % [LOG_NAME, i])
+				return
+			var obj_type = obj.get("type", -1)
+			if not obj_type is int or obj_type not in ObjectiveType.values():
+				push_error("%s: invalid objective type at index %d." % [LOG_NAME, i])
+				return
+			match obj_type:
+				ObjectiveType.KILL, ObjectiveType.COLLECT:
+					if not obj.has("target") or not obj.has("count"):
+						push_error("%s: KILL/COLLECT objective %d must have 'target' and 'count'." % [LOG_NAME, i])
+						return
+					if not (obj.target is String and obj.count is int):
+						push_error("%s: invalid types in objective %d." % [LOG_NAME, i])
+						return
+					if obj.count < MIN_OBJECTIVE_COUNT or obj.count > MAX_OBJECTIVE_COUNT:
+						push_error("%s: objective count out of range (%d-%d)." % [LOG_NAME, MIN_OBJECTIVE_COUNT, MAX_OBJECTIVE_COUNT])
+						return
+				ObjectiveType.REACH_AREA:
+					if not obj.has("area"):
+						push_error("%s: REACH_AREA objective %d must have 'area'." % [LOG_NAME, i])
+						return
+					if not (obj.area is String and obj.area.strip_edges() != ""):
+						push_error("%s: invalid area in objective %d." % [LOG_NAME, i])
+						return
+					if not obj.area in VALID_AREA_NAMES:
+						push_error("%s: area '%s' not in valid areas." % [LOG_NAME, obj.area])
+						return
+		objectives = value
+
+@export var rewards: Dictionary = {}:
+	set(value):
+		if value.is_empty():
+			push_error("%s: rewards dictionary cannot be empty." % LOG_NAME)
+			return
+		# At least one reward type must be present
+		var has_valid_reward := false
+		for key in value.keys():
+			if key in ["gold", "xp"]:
+				var val = value[key]
+				if val is int:
+					if val >= 0 and val <= (MAX_GOLD if key == "gold" else MAX_XP):
+						has_valid_reward = true
+					else:
+						push_error("%s: reward '%s' value out of range." % [LOG_NAME, key])
+						return
+				else:
+					push_error("%s: reward '%s' must be an integer." % [LOG_NAME, key])
+					return
+			elif key == "items":
+				var items = value[key] as Array
+				if items.is_empty():
+					push_error("%s: items list cannot be empty." % LOG_NAME)
+					return
+				for item in items:
+					if not item is Dictionary or not item.has("id") or not item.has("quantity"):
+						push_error("%s: each item must be a Dictionary with 'id' and 'quantity'." % LOG_NAME)
+						return
+				has_valid_reward = true
+			elif key == "recipe":
+				var recipe = value[key] as String
+				if recipe.strip_edges() == "":
+					push_error("%s: recipe reward cannot be empty." % LOG_NAME)
+					return
+				has_valid_reward = true
+			elif key == "trickle":
+				var trickle = value[key] as String
+				if trickle.strip_edges() == "":
+					push_error("%s: trickle reward cannot be empty." % LOG_NAME)
+					return
+				has_valid_reward = true
+			else:
+				push_warning("%s: unknown reward key '%s' - ignored." % [LOG_NAME, key])
+		if not has_valid_reward:
+			push_error("%s: reward must contain at least one valid reward (gold/xp/items/recipe/trickle)." % LOG_NAME)
+			return
+		rewards = value
+
+# -----------------------------------------------------------------------------
+# Initialization
+# -----------------------------------------------------------------------------
+func _init():
+	pass  # Replace Logger.log_debug if needed
+
+# -----------------------------------------------------------------------------
+# Public Methods
+# -----------------------------------------------------------------------------
+## Returns true if the quest is properly configured.
+func is_valid() -> bool:
+	return not npc_id.is_empty() \
+		and not quest_title.is_empty() \
+		and not objectives.is_empty() \
+		and not rewards.is_empty()
+
+## Returns a human-readable summary of the quest.
+func get_summary() -> String:
+	var summary := "Quest: %s (NPC: %s)\n" % [quest_title, npc_id]
+	summary += "Description: %s\n" % quest_description
+	summary += "Objectives: %d steps\n" % objectives.size()
+	summary += "Rewards: %s\n" % _format_rewards()
+	return summary
+
+func _format_rewards() -> String:
+	var parts := []
+	if rewards.has("gold"):
+		parts.append("%d gold" % rewards.gold)
+	if rewards.has("xp"):
+		parts.append("%d XP" % rewards.xp)
+	if rewards.has("items"):
+		for item in rewards.items:
+			parts.append("%dx %s" % [item.quantity, item.id])
+	if rewards.has("recipe"):
+		parts.append("Recipe: %s" % rewards.recipe)
+	if rewards.has("trickle"):
+		parts.append("Trickle: %s" % rewards.trickle)
+	return ", ".join(parts)
+
+# -----------------------------------------------------------------------------
+# Static utility (optional)
+# -----------------------------------------------------------------------------
+static func create_quest(npc_id: String, title: String, description: String, objectives: Array, rewards: Dictionary) -> QuestResource:
+	var quest := QuestResource.new()
+	quest.npc_id = npc_id
+	quest.quest_title = title
+	quest.quest_description = description
+	quest.objectives = objectives
+	quest.rewards = rewards
+	return quest
